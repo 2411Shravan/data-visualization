@@ -1,0 +1,96 @@
+{%extends"base.html"%}
+
+
+
+    {%block title%}
+        Intraday-Shares
+    {%endblock%}
+
+
+
+    {%block content%}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {%if messages %}
+        {%for category,message in messages%}
+            {%if category == "warning" %}
+            <div class="alert text-center alert-warning  alert-dismissable fade show" role="alert">
+                
+                    {{ message }}
+               
+                
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden ="true">&times;</span>
+                </button>
+            </div>
+            {%else%}
+            <div class="alert text-center alert-success  flex-end alert-dismissable fade show" role="alert">
+                
+                    {{ message }}
+               
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden ="true">&times;</span>
+                </button>
+            </div>
+            {%endif%}
+        {%endfor%}
+    {%endif%}
+{% endwith %}
+
+
+    <div class='container'>
+<div class="container mt-5 px-lg-5">
+    <form method='POST'>
+        <div class="card">
+            <div class="card-body">
+        <div class="mb-2">
+            <label class="form-label">Currency</label>
+            <input type="text" name='ticker' id='ticker' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
+        </div>
+        <button type="submit" class="btn btn-dark w-100">Get Data</button>
+       
+    </div>
+    </form>
+</div>
+
+            <!-- {%if low%}
+                {%for x in low%}
+                    {{x}}
+                {%endfor%}
+            {%endif%} -->
+
+</div>
+<div id="chart"></div>
+<script>
+        var options = {
+          series: [{
+          data: {{low | safe}}
+        }],
+          chart: {
+          type: 'candlestick',
+          height: 350
+        },
+        title: {
+          text: 'CandleStick Chart',
+          align: 'left'
+        },
+        xaxis: {
+          type: 'datetime'
+        },
+        yaxis: {
+          tooltip: {
+            enabled: true
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+</script>
+
+
+<style>
+   .card{
+       background:rgba(235, 235, 235, 0.94);
+   }
+</style>
+    {%endblock%}

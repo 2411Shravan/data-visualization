@@ -1,0 +1,304 @@
+{%extends 'base.html'%}
+
+
+
+{%block title%}
+    Crypto
+{%endblock%}
+
+
+
+
+{%block content%}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+        {%if messages %}
+            {%for category,message in messages%}
+                {%if category == "warning" %}
+                <div class="alert text-center alert-warning  alert-dismissable fade show" role="alert">
+                    
+                        {{ message }}
+                   
+                    
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden ="true">&times;</span>
+                    </button>
+                </div>
+                {%else%}
+                <div class="alert text-center alert-success  flex-end alert-dismissable fade show" role="alert">
+                    
+                        {{ message }}
+                   
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden ="true">&times;</span>
+                    </button>
+                </div>
+                {%endif%}
+            {%endfor%}
+        {%endif%}
+    {% endwith %}
+
+    <div class="container">
+        <div class="container mt-5 px-lg-5">
+            <a href="/crypto/country-codes/" class="btn btn-outline-primary">
+                Get Country Codes
+            </a>
+    
+            <a href="/crypto/crypto-codes/" class="btn btn-primary">
+                Get Crypto Codes
+            </a>
+        </div>
+        
+<div class="container mt-5 px-lg-5">
+  <div class="row gx-lg-5">
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/exchange/' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/fluent/96/000000/euro-pound-exchange-1.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Exchange Rates for Crypto Currencies</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+    
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/intraday/five-minutes-delay/'  style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/fluent/96/000000/calendar.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Intra-Day Data</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/daily/open-close' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/color/106/000000/close-pane.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Daily Open-Close</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+    
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/grouped-data' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/color/106/000000/group-of-projects.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Grouped Data On Daily Basis</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/close-data' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/fluency/106/000000/closed-sign.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Previous Close Units/Values</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/globalstats/' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/color/106/000000/earth-planet.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Global Statistics</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/allcoins/' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/fluent/106/000000/bitcoin-cryptocurrency.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Brief On Every Active Crypto Currency</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/market/' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"> <img src="https://img.icons8.com/fluent/106/000000/marketing.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Top 50 Crypto Markets</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/single-coin/' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"> <img src="https://img.icons8.com/cotton/106/000000/coin-wallet--v1.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Info On A Specific Crypto</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/exchanges-uuid/' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/fluent/106/000000/id-verified.png" /></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get All Exchanges With Ranks</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/coin-history/' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/color/96/000000/order-history.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Your Needed Crypto History</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/news' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/cute-clipart/96/000000/news.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get News Related To Crypto Coins/Currencies</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/daily' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"> <img src="https://img.icons8.com/color/106/000000/calendar-10.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Daily Data On Crypto Coins/Currencies</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/weekly'  style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/fluency/106/000000/property-time.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Weekly Data On Crypto Coins/Currencies</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+
+    <div class="col-lg-6 col-xxl-4 mb-5" >
+        <a href='/crypto/monthly' style="text-decoration: none;">
+        <div class="card  border-0 h-100" >
+            <div class="card-body text-dark text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                <div class="text-center d-flex" style='justify-content:center;align-items:center'>
+                    <div class="bg-white bg-gradient  rounded-3 pt-5 pb-5 mb-4 mt-n4 " style="border-radius: 50%; width:150px; height:150px;display:flex;justify-content:center;align-items:center"><img src="https://img.icons8.com/officel/106/000000/database-daily-export.png"/></div>
+
+                </div>
+                <h2 class="fs-4 fw-bold">Get Monthly Data On Crypto Coins/Currencies</h2>
+                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+    
+    </div>
+  </div>
+</div>
+
+
+    <style>
+       .card{
+           background:rgba(235, 235, 235, 0.94);
+       }
+
+
+    </style>
+{%endblock%}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <a href="https://icons8.com/icon/102908/admin-settings-male"></a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{{url_for('static',filename='js/crypto/exchange.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/stats.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/cryptoMarket.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/intradayData.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/cryptoData.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/countryData.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/allcoins.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/history.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/groupedData.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/openclose.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/singlecoin.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/closeUnit.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/cryptoNews.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/weeklyCrypto.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/dailyCrypto.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/monthly.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/crypto/cryptoExchange.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/fundamentals/fundamentals.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/fundamentals/insider.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/fundamentals/allstock.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/fundamentals/stock_exchange.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/fundamentals/ipo.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/fundamentals/sec.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/fundamentals/basics.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/fundamentals/income.js')}}" defer></script>
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"> -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js" integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.27.3/apexcharts.min.js" integrity="sha512-nKTh1Ik8Kzbrxo9A6xOBtEbzdNYcjI4Pr5XE88sNJQk87sY8mBlUfh61lYm0i710r5mGcIZ9tWSwORQbQ4plQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>{%block title%}{%endblock%}</title>
+</head>
+<body>
+    {%include 'navbar.html'%}
+
+
+    {%block content%}
+
+    {%endblock%}
+    
+   
+</body>
+</html>
