@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,6 +37,7 @@
     <script src="{{url_for('static',filename='js/fundamentals/sec.js')}}" defer></script>
     <script src="{{url_for('static',filename='js/fundamentals/basics.js')}}" defer></script>
     <script src="{{url_for('static',filename='js/fundamentals/income.js')}}" defer></script>
+    <script src="{{url_for('static',filename='js/shares/usintraday.js')}}" defer></script>
     <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
@@ -46,14 +48,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.27.3/apexcharts.min.js" integrity="sha512-nKTh1Ik8Kzbrxo9A6xOBtEbzdNYcjI4Pr5XE88sNJQk87sY8mBlUfh61lYm0i710r5mGcIZ9tWSwORQbQ4plQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>{%block title%}{%endblock%}</title>
 </head>
+
 <body>
-    {%include 'navbar.html'%}
+    {%include 'navbar.html'%} {%block content%} {%endblock%}
 
 
-    {%block content%}
-
-    {%endblock%}
-    
-   
 </body>
+
 </html>
