@@ -54,3 +54,12 @@ def shares():
         return render_template('/share-market/share/share-intraday.html',user=current_user,low=fulldata)
         # pprint(s)
     return render_template('/share-market/share/share-intraday.html',user=current_user)
+
+
+
+
+@share_market.route('/share/unitedstates-stockexchange/',methods=['GET','POST'])
+@login_required
+def USshares():
+   
+    return render_template('/share-market/intros/usIntro.html',user=current_user)
