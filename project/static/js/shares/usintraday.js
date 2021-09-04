@@ -4,12 +4,12 @@ tickers.addEventListener('submit', (e) => {
     // chase.style.display = 'block';
     e.preventDefault();
     const req_data = document.getElementById('ticker').value;
-    console.log(req_data);
+    // console.log(req_data);
     // CVAR = currencyDataA.value;
     // CDAR = coinDataA.value;
     // console.log(CVAR, CDAR);
     // getDataDialy(CVAR, CDAR);
-    console.log("Hello world");
+    //  console.log("Hello world");
     getShareData(req_data);
 });
 
@@ -18,11 +18,14 @@ function getShareData(data) {
     fetchShareData(api);
 }
 
+var key = [];
+var value = [];
+const final_res = [];
 
 async function fetchShareData(API) {
     const response = await fetch(API);
     const resposneData = await response.json();
-    console.log(resposneData);
+    // console.log(resposneData);
     sortData(resposneData);
 }
 
@@ -30,39 +33,66 @@ function sortData(data) {
     var redData = data['Time Series (5min)'];
     var ref_val = Object.values(redData);
     var ref_key = Object.keys(redData);
-    console.log(ref_val);
-    console.log(ref_key);
-    updateData(ref_val, ref_key);
+    // console.log(ref_val);
+    // console.log(ref_key);
+    updateData(ref_key, ref_val);
 }
 
-function updateData() {
-
+function updateData(keys, values) {
+    keys.forEach(data => {
+        key.push(data);
+    });
+    // console.log(key);
+    values.forEach(data => {
+        var temp_arr = [];
+        temp_arr.push(parseFloat(data['1. open']));
+        temp_arr.push(parseFloat(data['2. high']));
+        temp_arr.push(parseFloat(data['3. low']));
+        temp_arr.push(parseFloat(data['4. close']));
+        value.push(temp_arr);
+    });
+    mergeData();
 }
-// var options = {
-//     series: [{
-//         data: {
-//             {
-//                 low | safe
-//             }
-//         }
-//     }],
-//     chart: {
-//         type: 'candlestick',
-//         height: 350
-//     },
-//     title: {
-//         text: 'CandleStick Chart',
-//         align: 'left'
-//     },
-//     xaxis: {
-//         type: 'datetime'
-//     },
-//     yaxis: {
-//         tooltip: {
-//             enabled: true
-//         }
-//     }
-// };
 
-// var chart = new ApexCharts(document.querySelector("#chart"), options);
-// chart.render();
+function mergeData() {
+    for (var i = 0; i < key.length; i++) {
+        var resi = {};
+        // console.log(objects [i]);
+        resi['x'] = key[i];
+        //console.log(i);
+        final_res.push(resi);
+    }
+
+    for (var j = 0; j < value.length; j++) {
+        final_res[j]['y'] = value[j];
+    }
+
+    console.log(final_res);
+    var options = {
+        series: [{
+            data: final_res,
+        }],
+        chart: {
+            type: 'candlestick',
+            height: 350
+        },
+        title: {
+            text: 'MetaData',
+            align: 'left'
+        },
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: {
+            tooltip: {
+                enabled: true
+            }
+        }
+    };
+
+    const div = document.getElementById('shareChart');
+
+
+    var chart = new ApexCharts(div, options);
+    chart.render();
+}
