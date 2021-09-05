@@ -1,9 +1,12 @@
 const tickers = document.getElementById('tickersdata');
-
+const loadExchange = document.getElementById('loaderExchange');
+const dshow = document.getElementById('dshow');
 tickers.addEventListener('submit', (e) => {
 
     e.preventDefault();
+    dshow.style.display = 'none';
     const req_data = document.getElementById('ticker').value;
+    loadExchange.style.display = 'block';
 
     getShareData(req_data);
 });
@@ -61,7 +64,8 @@ function mergeData() {
     for (var j = 0; j < value.length; j++) {
         final_res[j]['y'] = value[j];
     }
-
+    loadExchange.style.display = 'none';
+    dshow.style.display = 'block';
     console.log(final_res);
     var options = {
         series: [{
