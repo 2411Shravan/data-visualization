@@ -1,15 +1,10 @@
 const tickers = document.getElementById('tickersdata');
 
 tickers.addEventListener('submit', (e) => {
-    // chase.style.display = 'block';
+
     e.preventDefault();
     const req_data = document.getElementById('ticker').value;
-    // console.log(req_data);
-    // CVAR = currencyDataA.value;
-    // CDAR = coinDataA.value;
-    // console.log(CVAR, CDAR);
-    // getDataDialy(CVAR, CDAR);
-    //  console.log("Hello world");
+
     getShareData(req_data);
 });
 
@@ -74,7 +69,8 @@ function mergeData() {
         }],
         chart: {
             type: 'candlestick',
-            height: 350
+            height: 350,
+            foreColor: '#000000'
         },
         title: {
             text: 'MetaData',
@@ -87,6 +83,16 @@ function mergeData() {
             tooltip: {
                 enabled: true
             }
+        },
+        theme: {
+            mode: 'light',
+            palette: 'palette1',
+            monochrome: {
+                enabled: false,
+                color: '#ffffff',
+                shadeTo: 'light',
+                shadeIntensity: 0.65
+            },
         }
     };
 

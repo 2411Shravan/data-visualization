@@ -1,4 +1,4 @@
-{%extends"base.html"%} {%block title%} Intraday-Shares {%endblock%} {%block content%} {% with messages = get_flashed_messages(with_categories=true) %} {%if messages %} {%for category,message in messages%} {%if category == "warning" %}
+{%extends"base.html"%} {%block title%} Daily-Shares {%endblock%} {%block content%} {% with messages = get_flashed_messages(with_categories=true) %} {%if messages %} {%for category,message in messages%} {%if category == "warning" %}
 <div class="alert text-center alert-warning  alert-dismissable fade show" role="alert">
 
     {{ message }}
@@ -22,12 +22,12 @@
 
 <div class='container'>
     <div class="container mt-5 px-lg-5">
-        <form id='tickersdata'>
+        <form id='tickersdataDaily' method='post' onsubmit='validateFormData()'>
             <div class="card">
                 <div class="card-body">
                     <div class="mb-2">
                         <label class="form-label">Currency</label>
-                        <input type="text" name='ticker' id='ticker' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
+                        <input type="text" name='tickerD' id='tickerD' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
                     </div>
                     <button type="submit" class="btn btn-dark w-100">Get Data</button>
 
@@ -37,22 +37,8 @@
 
 
     </div>
-    <div class='cardee container mt-5 px-lg-5 mb-3'>
-        <div class='container mt-5 px-lg-5'>
-            <div id="shareChart" class='pt-3 pb-2 pl-2'></div>
-        </div>
+    <div id="shareChart"></div>
 
-    </div>
 
-    <style>
-        .cardee {
-            background-color: #ffffff;
-            background-image: linear-gradient( #ffffff);
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.40);
-            border-radius: 25px;
-            border: 1px solid rgba( 0, 0, 0, 0.18);
-            color: rgb(0, 0, 0);
-        }
-    </style>
 
     {%endblock%}
