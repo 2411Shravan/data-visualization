@@ -1,4 +1,5 @@
 const tickersdataDaily = document.getElementById('tickersdataDaily');
+const loaderEye = document.getElementById('loaderEye');
 var daily_dates = [];
 var ohlc = [];
 var final_barstick = [];
@@ -6,7 +7,7 @@ var final_barstick = [];
 tickersdataDaily.addEventListener('submit', (e) => {
 
     e.preventDefault();
-
+    loaderEye.style.display = 'block';
     const req_data = document.getElementById('tickerD').value;
     // console.log(req_data);
     ready_data(req_data);
@@ -72,7 +73,7 @@ function mergeDailyData() {
     }
 
     console.log(final_barstick);
-
+    loaderEye.style.display = 'none';
     var options = {
         series: [{
             data: final_barstick,

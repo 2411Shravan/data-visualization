@@ -77,8 +77,8 @@ def USdailydata():
 @share_market.route('/share/unitedstates-stockexchange/weekly-data/',methods=['GET','POST'])
 @login_required
 def USweeklydata():
-    return "hello world"
-    # return render_template('/share-market/intros/usIntro.html',user=current_user)
+    
+    return render_template('/share-market/share/us/share-weekly.html',user=current_user)
 
 
 @share_market.route('/share/unitedstates-stockexchange/monthly-data/',methods=['GET','POST'])
