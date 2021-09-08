@@ -73,7 +73,7 @@ function mergeData() {
         }],
         chart: {
             type: 'candlestick',
-            height: 350,
+            height: 400,
             foreColor: '#000000'
         },
         title: {

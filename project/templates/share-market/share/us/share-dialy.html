@@ -22,7 +22,7 @@
 
 <div class='container'>
     <div class="container mt-5 px-lg-5">
-        <form id='tickersdataDaily' method='post' onsubmit='validateFormData()'>
+        <form id='tickersdataDaily' method='post'>
             <div class="card">
                 <div class="card-body">
                     <div class="mb-2">
@@ -37,8 +37,22 @@
 
 
     </div>
-    <div id="shareChart"></div>
+    <div class='cardee container mt-5 px-lg-5 mb-3' id='dshow'>
+        <div class='container mt-5 px-lg-5'>
+            <div id="shareDailyChart" class='pt-3 pb-2 pl-2'></div>
+        </div>
+    </div>
 
+    <style>
+        .cardee {
+            background-color: #ffffff;
+            background-image: linear-gradient( #ffffff);
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.40);
+            border-radius: 25px;
+            border: 1px solid rgba( 0, 0, 0, 0.18);
+            color: rgb(0, 0, 0.4);
+        }
+    </style>
 
 
     {%endblock%}
