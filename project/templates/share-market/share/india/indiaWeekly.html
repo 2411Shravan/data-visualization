@@ -76,46 +76,7 @@
         </div>
     </div>
 
-    <script>
-         var options = {
-        series: [{
-            data: {{ final_data | safe}},
-        }],
-        chart: {
-            type: 'candlestick',
-            height: 400,
-            foreColor: '#000000'
-        },
-        title: {
-            text: 'MetaData',
-            align: 'left'
-        },
-        xaxis: {
-            type: 'datetime'
-        },
-        yaxis: {
-            tooltip: {
-                enabled: true
-            }
-        },
-        theme: {
-            mode: 'light',
-            palette: 'palette1',
-            monochrome: {
-                enabled: false,
-                color: '#ffffff',
-                shadeTo: 'light',
-                shadeIntensity: 0.65
-            },
-        }
-    };
 
-    const div = document.getElementById('IndianIntradayChart');
-
-
-    var chart = new ApexCharts(div, options);
-    chart.render();
-    </script>
     <style>
         .cardee {
             background-color: #ffffff;
