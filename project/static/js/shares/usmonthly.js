@@ -23,7 +23,7 @@ function ready_monthly_data(rd){
 async function fetchMonthlyData(API){
     const response = await fetch(API);
     const responseData = await response.json();
-    console.log(responseData);
+    // console.log(responseData);
     sortMontlyData(responseData);
 }
 
@@ -31,7 +31,7 @@ function sortMontlyData(responses){
     var redData = responses['Monthly Adjusted Time Series'];
     var ref_val = Object.values(redData);
     var ref_key = Object.keys(redData);
-    console.log(ref_key,ref_val);
+    // console.log(ref_key,ref_val);
     updateMonthlyData(ref_key, ref_val);
 }
 
@@ -39,10 +39,10 @@ function updateMonthlyData(key, val) {
     // console.log(key.length);
     // console.log(val.length);
     key.forEach(value => {
-        weekly_dates.push(value);
+        monthly_dates.push(value);
     });
 
-    console.log(weekly_dates);
+    console.log(monthly_dates);
 
     val.forEach(data => {
         var temp_arr = [];
@@ -50,8 +50,8 @@ function updateMonthlyData(key, val) {
         temp_arr.push(parseFloat(data['2. high']));
         temp_arr.push(parseFloat(data['3. low']));
         temp_arr.push(parseFloat(data['4. close']));
-        weekly_ohlc.push(temp_arr);
+        monthly_ohlc.push(temp_arr);
     });
-    // console.log(ohlc);
-    mergeWeeklyData();
+    console.log(monthly_ohlc);
+    // mergeWeeklyData();
 }
