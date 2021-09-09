@@ -55,3 +55,58 @@ function updateMonthlyData(key, val) {
     console.log(monthly_ohlc);
     mergeMonthlyData();
 }
+
+function mergeMonthlyData(){
+    for (var i = 0; i < monthly_dates.length; i++) {
+        var resi = {};
+        // console.log(objects [i]);
+        resi['x'] = monthly_dates[i];
+        //console.log(i);
+        final_monthly.push(resi);
+    }
+
+    for (var j = 0; j < monthly_ohlc.length; j++) {
+        final_monthly[j]['y'] = monthly_ohlc[j];
+    }
+
+    console.log(final_monthly);
+    loaderCycle.style.display = 'none';
+    var options = {
+        series: [{
+            data: final_monthly,
+        }],
+        chart: {
+            type: 'candlestick',
+            height: 400,
+            foreColor: '#000000'
+        },
+        title: {
+            text: 'MetaData',
+            align: 'left'
+        },
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: {
+            tooltip: {
+                enabled: true
+            }
+        },
+        theme: {
+            mode: 'light',
+            palette: 'palette1',
+            monochrome: {
+                enabled: false,
+                color: '#ffffff',
+                shadeTo: 'light',
+                shadeIntensity: 0.65
+            },
+        }
+    };
+
+    const div = document.getElementById('shareMonthlyChart');
+
+
+    var chart = new ApexCharts(div, options);
+    chart.render();
+}
