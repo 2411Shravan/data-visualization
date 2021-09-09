@@ -29,7 +29,7 @@
 {%endfor%}
  {%endif%} 
  {% endwith %}
-
+<div class='body-images'>
 <div class='container start' style='display:flex;justify-content:center;align-items:center'>
     <div class="col-lg-6 col-xxl-12 col-md-7 col-sm-12 mb-5">
         <div class="card  border-0 h-100">
@@ -50,13 +50,18 @@
     </div>
 </div>
 
-
-
-<div id="chart"></div>
+</div>
 
 <style>
+   .body-images{
+       background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
+        background-position: center;
+        background-size: cover;
+        min-height: 100vh;
+    }
+
     .start {
-        margin-top: 50px;
+        padding-top: 50px;
     }
     
     @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@400;500&display=swap");
@@ -79,6 +84,7 @@
         border-radius: 12px;
         border: 1px solid rgba( 0, 0, 0, 0.18);
         color: white;
+        opacity: 0.9;
     }
     
     .card-body {
