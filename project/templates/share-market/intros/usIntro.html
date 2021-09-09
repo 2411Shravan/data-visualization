@@ -1,4 +1,12 @@
-{%extends"base.html"%} {%block title%} Intraday-Shares {%endblock%} {%block content%} {% with messages = get_flashed_messages(with_categories=true) %} {%if messages %} {%for category,message in messages%} {%if category == "warning" %}
+{%extends"base.html"%} 
+{%block title%}
+ Intraday-Shares
+  {%endblock%} 
+  {%block content%} 
+  {% with messages = get_flashed_messages(with_categories=true) %}
+   {%if messages %}
+    {%for category,message in messages%}
+     {%if category == "warning" %}
 <div class="alert text-center alert-warning  alert-dismissable fade show" role="alert">
 
     {{ message }}
@@ -17,7 +25,10 @@
                     <span aria-hidden ="true">&times;</span>
                 </button>
 </div>
-{%endif%} {%endfor%} {%endif%} {% endwith %}
+{%endif%} 
+{%endfor%}
+ {%endif%} 
+ {% endwith %}
 
 <div class='container start' style='display:flex;justify-content:center;align-items:center'>
     <div class="col-lg-6 col-xxl-12 col-md-7 col-sm-12 mb-5">
