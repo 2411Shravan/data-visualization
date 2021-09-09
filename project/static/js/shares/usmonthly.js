@@ -1,5 +1,5 @@
 const tickersdataMonthly = document.getElementById('tickersdataMonthly');
-// const loaderCycle = document.getElementById('loaderCycle');
+const loaderDouble = document.getElementById('loaderDouble');
 var monthly_dates = [];
 var monthly_ohlc = [];
 var final_monthly = [];
@@ -7,7 +7,7 @@ var final_monthly = [];
 tickersdataMonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    // loaderCycle.style.display = 'block';
+    loaderDouble.style.display = 'block';
     const req_data = document.getElementById('tickerM').value;
     console.log(req_data);
     ready_monthly_data(req_data);
@@ -70,7 +70,7 @@ function mergeMonthlyData(){
     }
 
     console.log(final_monthly);
-    loaderCycle.style.display = 'none';
+    loaderDouble.style.display = 'none';
     var options = {
         series: [{
             data: final_monthly,
