@@ -1,0 +1,116 @@
+{%extends"base.html"%} 
+{%block title%}
+ Daily-Shares
+ {%endblock%}
+{%block content%}
+ {% with messages = get_flashed_messages(with_categories=true) %}
+  {%if messages %} 
+  {%for category,message in messages%} 
+  {%if category == "warning" %}
+<div class="alert text-center alert-warning  alert-dismissable fade show" role="alert">
+
+    {{ message }}
+
+
+    <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden ="true">&times;</span>
+                </button>
+</div>
+{%else%}
+<div class="alert text-center alert-success  flex-end alert-dismissable fade show" role="alert">
+
+    {{ message }}
+
+    <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden ="true">&times;</span>
+                </button>
+</div>
+{%endif%} 
+{%endfor%}
+ {%endif%}
+  {% endwith %}
+
+
+<div class='container'>
+    <div class="container mt-5 px-lg-5">
+        <form id='tickersdataWeekly' method='post'>
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-2">
+                        <label class="form-label">Currency</label>
+                        <input type="text" name='tickerW' id='tickerW' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100">Get Data</button>
+
+                </div>
+        </form>
+        </div>
+
+
+    </div>
+
+    <div class='container' style=' margin-top:30px;display:flex;justify-content:center;align-items:center'>
+        <span class="loader" id='loaderCycle'></span>
+    </div>
+
+    <div class='cardee container mt-5 px-lg-5 mb-3' id='dshow'>
+        <div class='container mt-5 px-lg-5'>
+            <div id="shareWeeklyChart" class='pt-3 pb-2 pl-2'></div>
+        </div>
+    </div>
+
+<style>
+            .cardee {
+            background-color: #ffffff;
+            background-image: linear-gradient( #ffffff);
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.40);
+            border-radius: 25px;
+            border: 1px solid rgba( 0, 0, 0, 0.18);
+            color: rgb(0, 0, 0.4);
+        }
+        .loader {
+  width: 106px;
+  height: 56px;
+  display: none;
+  margin: 30px auto;
+  background-image: linear-gradient(rgb(114, 114, 114) 50px, transparent 0), linear-gradient(rgb(84, 83, 83) 50px, transparent 0), linear-gradient(rgb(72, 72, 72) 50px, transparent 0), lineargb(80, 80, 80)adient(rgb(44, 44, 44) 50px, transparent 0), radial-gradient(circle 14px, rgb(44, 44, 44) 100%, transparent 0);
+  background-size: 48px 15px , 15px 35px, 15px 35px, 25px 15px, 28px 28px;
+  background-position: 25px 5px, 58px 20px, 25px 17px, 2px 37px, 76px 0px;
+  background-repeat: no-repeat;
+  position: relative;
+  transform: rotate(-45deg);
+  box-sizing: border-box;
+}
+.loader::after,
+.loader::before {
+  content: '';  
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border: 6px solid rgb(44, 44, 44);
+  border-radius: 50%;
+  left: -45px;
+  top: -10px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(rgb(44, 44, 44) 64px, transparent 0), linear-gradient(rgb(44, 44, 44) 66px, transparent 0), radial-gradient(circle 4px, rgb(44, 44, 44) 100%, transparent 0);
+  background-size: 40px 1px , 1px 40px, 8px 8px;
+  background-position: center center;
+  box-sizing: border-box;
+  animation: rotation 0.3s linear infinite;
+}
+.loader::before {
+  left: 25px;
+  top: 60px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+</style>
+
+    {%endblock%}
