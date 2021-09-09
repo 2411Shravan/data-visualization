@@ -53,5 +53,5 @@ function updateMonthlyData(key, val) {
         monthly_ohlc.push(temp_arr);
     });
     console.log(monthly_ohlc);
-    // mergeWeeklyData();
+    mergeMonthlyData();
 }
