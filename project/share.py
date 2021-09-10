@@ -109,7 +109,8 @@ def IndiaIntradayShares():
         return render_template('/share-market/share/india/indiaDay.html',user=current_user,final_data=indiaFinal)
 
 
+    num=random.randint(0,9)
+    fact=facts[num]['fact']
 
-
-    return render_template('/share-market/share/india/indiaDay.html',user=current_user)
+    return render_template('/share-market/share/india/indiaDay.html',user=current_user,fact=fact)
     
