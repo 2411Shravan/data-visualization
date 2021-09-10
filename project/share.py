@@ -86,13 +86,15 @@ def IndiaIntradayShares():
             req['y']=values
             indiaFinal.append(req)
 
+        i=0
+        for data in indiaFinal:
+            
+            data['x']=indiaDayKeys[i]
+            i=i+1
 
-        for data in indiaDayKeys:
-            res={}
-            res['x']=data
-            indiaFinal.append(res)
-
-
+        
+        
+            
 
 
 
