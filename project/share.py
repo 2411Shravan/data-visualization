@@ -8,6 +8,7 @@ from pprint import pprint
 from flask import request
 import requests
 from pprint import pprint
+import random
 
 share_market = Blueprint('share_market', __name__)
 
@@ -16,9 +17,9 @@ share_market = Blueprint('share_market', __name__)
 def shares():
     return render_template('/share-market/share/us/share-intraday.html',user=current_user)
 
-indiaDayKeys=[];
-indiaDayValues=[];
-indiaFinal=[];
+indiaDayKeys=[]
+indiaDayValues=[]
+indiaFinal=[]
 facts=[
     {'fact':'McDonald’s once made bubblegum-flavored broccoli'},
     {'fact':'Some fungi create zombies, then control their minds'},
@@ -30,7 +31,7 @@ facts=[
     {'fact':'The “Windy City” name has nothing to do with Chicago weather'},
     {'fact':'Armadillo shells are bulletproof'},
     {'fact':'The longest English word is 189,819 letters long'}
-];
+]
 
 @share_market.route('/share/unitedstates-stockexchange/',methods=['GET','POST'])
 @login_required
