@@ -78,26 +78,26 @@ def IndiaIntradayShares():
 
         for singledata in first_values:
             values=[];
-            values.append(singledata['1. open'])
-            values.append(singledata['2. high'])
-            values.append(singledata['3. low'])
-            values.append(singledata['4. close'])
+            values.append(float(singledata['1. open']))
+            values.append(float(singledata['2. high']))
+            values.append(float(singledata['3. low']))
+            values.append(float(singledata['4. close']))
             req={}
             req['y']=values
             indiaFinal.append(req)
 
         i=0
-        for data in indiaFinal:
-            
+        for data in indiaFinal:   
             data['x']=indiaDayKeys[i]
             i=i+1
-
-        
-        
-            
 
 
 
         pprint(indiaFinal)
+        return render_template('/share-market/share/india/indiaDay.html',user=current_user,final_data=indiaFinal)
+
+
+
+
     return render_template('/share-market/share/india/indiaDay.html',user=current_user)
     
