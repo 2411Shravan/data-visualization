@@ -25,6 +25,11 @@ def USshares():
    
     return render_template('/share-market/intros/usIntro.html',user=current_user)
 
+@share_market.route('/share/india-stockexchange/',methods=['GET','POST'])
+@login_required
+def IndiaShares():
+    
+    return render_template('/share-market/intros/IndiaIntro.html',user=current_user)
 
 
 
