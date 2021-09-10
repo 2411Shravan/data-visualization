@@ -19,7 +19,18 @@ def shares():
 indiaDayKeys=[];
 indiaDayValues=[];
 indiaFinal=[];
-
+facts=[
+    {'fact':'McDonald’s once made bubblegum-flavored broccoli'},
+    {'fact':'Some fungi create zombies, then control their minds'},
+    {'fact':'The first oranges weren’t orange'},
+    {'fact':'There’s only one letter that doesn’t appear in any U.S. state name'},
+    {'fact':'Johnny Appleseed’s fruits weren’t for eating'},
+    {'fact':'Scotland has 421 words for “snow”'},
+    {'fact':'Samsung tests phone durability with a butt-shaped robot'},
+    {'fact':'The “Windy City” name has nothing to do with Chicago weather'},
+    {'fact':'Armadillo shells are bulletproof'},
+    {'fact':''}
+];
 
 @share_market.route('/share/unitedstates-stockexchange/',methods=['GET','POST'])
 @login_required
