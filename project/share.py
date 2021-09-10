@@ -16,7 +16,9 @@ share_market = Blueprint('share_market', __name__)
 def shares():
     return render_template('/share-market/share/us/share-intraday.html',user=current_user)
 
-
+indiaDayKeys=[];
+indiaDayValues=[];
+indiaFinal=[];
 
 
 @share_market.route('/share/unitedstates-stockexchange/',methods=['GET','POST'])
@@ -24,13 +26,6 @@ def shares():
 def USshares():
    
     return render_template('/share-market/intros/usIntro.html',user=current_user)
-
-@share_market.route('/share/india-stockexchange/',methods=['GET','POST'])
-@login_required
-def IndiaShares():
-    
-    return render_template('/share-market/intros/IndiaIntro.html',user=current_user)
-
 
 
 @share_market.route('/share/unitedstates-stockexchange/daily-data/',methods=['GET','POST'])
@@ -52,3 +47,55 @@ def USweeklydata():
 def USmonthlydata():
 
     return render_template('/share-market/share/us/share-monthly.html',user=current_user)
+
+
+@share_market.route('/share/india-stockexchange/',methods=['GET','POST'])
+@login_required
+def IndiaShares():
+    
+    return render_template('/share-market/intros/IndiaIntro.html',user=current_user)
+
+
+
+@share_market.route('/share/india-stockexchange/daily-data/',methods=['GET','POST'])
+@login_required
+def IndiaIntradayShares():
+    if request.method == 'POST':
+        code= request.form['IndiantickerI']
+        up=code.upper()
+        print(up)
+        api='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+up+'.BSE&outputsize=full&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        first_filter=raw_data['Time Series (Daily)']
+        first_keys=first_filter.keys()
+        print(len(first_keys))
+        for data in first_keys:
+            indiaDayKeys.append(data)
+
+        first_values=first_filter.values()
+        print(len(first_values))
+
+        for singledata in first_values:
+            values=[];
+            values.append(singledata['1. open'])
+            values.append(singledata['2. high'])
+            values.append(singledata['3. low'])
+            values.append(singledata['4. close'])
+            req={}
+            req['y']=values
+            indiaFinal.append(req)
+
+
+        for data in indiaDayKeys:
+            res={}
+            res['x']=data
+            indiaFinal.append(res)
+
+
+
+
+
+        pprint(indiaFinal)
+    return render_template('/share-market/share/india/indiaDay.html',user=current_user)
+    
