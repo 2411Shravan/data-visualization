@@ -31,19 +31,21 @@
   {% endwith %}
     <div class="container">
         <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-            <strong>Hey {{user.username}}!</strong> After you submit your request, it may take some time to get responses since we have to deal with huge data.
+            <strong>Hey {{user.username}}!</strong> After you submit your request, it may take some time to get responses since we have to deal with huge data.Till then read some interesting facts we've given to you in below info feed section
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
-
+          {%if fact%}
           <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
             <strong>{{user.username}}</strong> Did you know that {{fact}} ?
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          {%endif%}
+
     </div>
 
 <div class='container'>
