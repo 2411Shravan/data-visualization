@@ -29,7 +29,7 @@ facts=[
     {'fact':'Samsung tests phone durability with a butt-shaped robot'},
     {'fact':'The “Windy City” name has nothing to do with Chicago weather'},
     {'fact':'Armadillo shells are bulletproof'},
-    {'fact':''}
+    {'fact':'The longest English word is 189,819 letters long'}
 ];
 
 @share_market.route('/share/unitedstates-stockexchange/',methods=['GET','POST'])
