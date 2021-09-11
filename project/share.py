@@ -67,11 +67,16 @@ def IndiaShares():
     
     return render_template('/share-market/intros/IndiaIntro.html',user=current_user)
 
+@share_market.route('/share/india-stockexchange/weekly-data/',methods=['GET','POST'])
+@login_required
+def IndiaWeeklyShares():
+    
+    return render_template('/share-market/share/india/indiaWeekly.html',user=current_user)
 
 
 @share_market.route('/share/india-stockexchange/daily-data/',methods=['GET','POST'])
 @login_required
-def IndiaIntradayShares():
+def IndiaDailyShares():
     if request.method == 'POST':
         code= request.form['IndiantickerI']
         up=code.upper()
