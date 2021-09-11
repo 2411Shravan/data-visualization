@@ -1,5 +1,5 @@
 const IndiantickersWeekly = document.getElementById('IndiantickersWeekly');
-const loadExchange = document.getElementById('loaderExchange');
+// const loadExchange = document.getElementById('loaderExchange');
 
 IndiantickersWeekly.addEventListener('submit', (e) => {
 
@@ -9,5 +9,9 @@ IndiantickersWeekly.addEventListener('submit', (e) => {
     const updata=req_data.toUpperCase();
     console.log(updata);
 
-    //getShareData(req_data);
+    getIndianWeeklyData(req_data);
 });
+
+function getIndianWeeklyData(data){
+    var api='https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol='+IBM+'.BSE&apikey=WH75LQJ4BD7S15TO'
+}
