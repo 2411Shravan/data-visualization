@@ -5,8 +5,9 @@ IndiantickersWeekly.addEventListener('submit', (e) => {
 
     e.preventDefault();
     // loadExchange.style.display = 'block';
-    const req_data = document.getElementById('ticker').value;
-    
+    const req_data = document.getElementById('IndiantickerW').value;
+    const updata=req_data.toUpperCase();
+    console.log(updata);
 
-    getShareData(req_data);
+    //getShareData(req_data);
 });
