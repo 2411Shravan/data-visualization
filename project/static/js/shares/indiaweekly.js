@@ -13,5 +13,12 @@ IndiantickersWeekly.addEventListener('submit', (e) => {
 });
 
 function getIndianWeeklyData(data){
-    var api='https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol='+IBM+'.BSE&apikey=WH75LQJ4BD7S15TO'
+    var api='https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol='+data+'.BSE&apikey=WH75LQJ4BD7S15TO'
+    fetchIndianWeeklyData(api);
+}
+
+async function fetchIndianWeeklyData(API) {
+    const response = await fetch(API);
+    const responseData = await response.json();
+    console.log(responseData);
 }
