@@ -67,11 +67,11 @@ def IndiaShares():
     
     return render_template('/share-market/intros/IndiaIntro.html',user=current_user)
 
-@share_market.route('/share/india-stockexchange/weekly-data/',methods=['GET','POST'])
+@share_market.route('/share/india-stockexchange/monthly-data/',methods=['GET','POST'])
 @login_required
-def IndiaWeeklyShares():
+def IndiaMonthlyShares():
     
-    return render_template('/share-market/share/india/indiaWeekly.html',user=current_user)
+    return render_template('/share-market/share/india/indiaMonthly.html',user=current_user)
 
 
 @share_market.route('/share/india-stockexchange/daily-data/',methods=['GET','POST'])
