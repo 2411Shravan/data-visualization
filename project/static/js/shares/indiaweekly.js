@@ -59,15 +59,15 @@ function mergeWeeklyData() {
     for (var i = 0; i < keyWeek.length; i++) {
         var resi = {};
         // console.log(objects [i]);
-        resi['x'] = key[i];
+        resi['x'] = keyWeek[i];
         //console.log(i);
         final_result.push(resi);
     }
 
     for (var j = 0; j < valueWeek.length; j++) {
-        final_result[j]['y'] = value[j];
+        final_result[j]['y'] = valueWeek[j];
     }
-    loadExchange.style.display = 'none';
+    // loadExchange.style.display = 'none';
 
     console.log(final_result);
     var options = {
