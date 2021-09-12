@@ -56,5 +56,57 @@ function updateIndianMonthlyData(keys,values){
 }
 
 function mergeMonthlyData(){
+    for (var i = 0; i < keyWeek.length; i++) {
+        var resi = {};
+        // console.log(objects [i]);
+        resi['x'] = keyWeek[i];
+        //console.log(i);
+        final_result.push(resi);
+    }
+
+    for (var j = 0; j < valueWeek.length; j++) {
+        final_result[j]['y'] = valueWeek[j];
+    }
+    loaderTimer.style.display = 'none';
+
+    console.log(final_result);
+    var options = {
+        series: [{
+            data: final_result,
+        }],
+        chart: {
+            type: 'candlestick',
+            height: 400,
+            foreColor: '#000000'
+        },
+        title: {
+            text: 'MetaData',
+            align: 'left'
+        },
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: {
+            tooltip: {
+                enabled: true
+            }
+        },
+        theme: {
+            mode: 'light',
+            palette: 'palette1',
+            monochrome: {
+                enabled: false,
+                color: '#ffffff',
+                shadeTo: 'light',
+                shadeIntensity: 0.65
+            },
+        }
+    };
+
+    const div = document.getElementById('IndianWeeklyChart');
+
+
+    var chart = new ApexCharts(div, options);
+    chart.render();
 
 }
