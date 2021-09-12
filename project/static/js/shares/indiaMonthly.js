@@ -19,5 +19,7 @@ function getIndianMonthlyData(getData){
 }
 
 async function fetchIndianMonthlyData(API){
-    const response
+    const response = await fetch(API);
+    const responseData=await response.json();
+    console.log(responseData);
 }
