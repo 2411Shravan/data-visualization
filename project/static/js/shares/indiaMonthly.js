@@ -1,5 +1,5 @@
 const IndiantickersMonthly = document.getElementById('IndiantickersMonthly');
-const loaderTimer = document.getElementById('loaderTimer');
+// const loaderTimer = document.getElementById('loaderTimer');
 
 IndiantickersMonthly.addEventListener('submit', (e) => {
 
@@ -9,7 +9,7 @@ IndiantickersMonthly.addEventListener('submit', (e) => {
     const updata=req_data.toUpperCase();
     console.log(updata);
 
-    getIndianWMonthlyData(req_data);
+    getIndianWMonthlyData(updata);
 });
 
 function getIndianWMonthlyData(getData){
