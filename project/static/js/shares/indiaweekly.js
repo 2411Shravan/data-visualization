@@ -12,6 +12,9 @@ IndiantickersWeekly.addEventListener('submit', (e) => {
     getIndianWeeklyData(req_data);
 });
 
+var keyWeek=[];
+var valueWeek=[];
+
 function getIndianWeeklyData(data){
     var api='https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol='+data+'.BSE&apikey=WH75LQJ4BD7S15TO'
     fetchIndianWeeklyData(api);
@@ -26,4 +29,26 @@ async function fetchIndianWeeklyData(API) {
 
 function sortIndianWeeklyData(responseData){
     console.log(sortingData);
+    var redData = data['Weekly Time Series'];
+    var ref_val = Object.values(redData);
+    var ref_key = Object.keys(redData);
+    console.log(ref_val);
+    console.log(ref_key);
+    updateIndianWeeklyData(ref_key, ref_val);
+}
+
+function updateIndianWeeklyData(key,val){
+    key.forEach(data => {
+        keyWeek.push(data);
+    });
+    // console.log(key);
+    val.forEach(data => {
+        var temp_arr = [];
+        temp_arr.push(parseFloat(data['1. open']));
+        temp_arr.push(parseFloat(data['2. high']));
+        temp_arr.push(parseFloat(data['3. low']));
+        temp_arr.push(parseFloat(data['4. close']));
+        valueWeek.push(temp_arr);
+    });
+    mergeWeeklyData();
 }
