@@ -69,7 +69,47 @@
             border: 1px solid rgba( 0, 0, 0, 0.18);
             color: rgb(0, 0, 0.4);
         }
+        .loader {
+  width: 48px;
+  height: 12px;
+  background: rgb(0, 0, 0);
+  margin-top: 40px;
+  display: none;
+  position: relative;
+}
+.loader::after {
+  content: '';  
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  position: absolute;
+  border: 15px solid transparent;
+  border-top-color: rgb(0, 0, 0);
+  box-sizing: border-box;
+  animation: bump 0.4s ease-in-out infinite alternate;
+}
+.loader::before {
+  content: '';  
+  left: 50%;
+  bottom: 25px;
+  transform: translate(-50%, 0);
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  background: rgb(0, 0, 0);
+  box-sizing: border-box;
+  animation: bump 0.4s ease-in-out infinite alternate;
+}
 
+@keyframes bump {
+  0% {
+    transform: translate(-50%, 5px);
+  }
+  100% {
+    transform: translate(-50%, -5px);
+  }
+}
+    
     
 
     </style>
