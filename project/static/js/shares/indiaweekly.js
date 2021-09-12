@@ -21,4 +21,9 @@ async function fetchIndianWeeklyData(API) {
     const response = await fetch(API);
     const responseData = await response.json();
     console.log(responseData);
+    sortIndianWeeklyData(responseData);
+}
+
+function sortIndianWeeklyData(responseData){
+    console.log(sortingData);
 }
