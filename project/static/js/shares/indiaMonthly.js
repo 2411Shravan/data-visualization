@@ -1,10 +1,10 @@
 const IndiantickersMonthly = document.getElementById('IndiantickersMonthly');
-// const loaderTimer = document.getElementById('loaderTimer');
+const loaderMonth = document.getElementById('loaderMonth');
 
 IndiantickersMonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    // loaderTimer.style.display = 'block';
+    loaderMonth.style.display = 'block';
     const req_data = document.getElementById('IndiantickerM').value;
     const updata=req_data.toUpperCase();
     console.log(updata);
@@ -59,15 +59,15 @@ function mergeMonthlyData(){
     for (var i = 0; i < keyMonth.length; i++) {
         var resi = {};
         // console.log(objects [i]);
-        resi['x'] = keyWeek[i];
+        resi['x'] = keyMonth[i];
         //console.log(i);
         final_resultMonth.push(resi);
     }
 
     for (var j = 0; j < valueMonth.length; j++) {
-        final_resultMonth[j]['y'] = valueWeek[j];
+        final_resultMonth[j]['y'] = valueMonth[j];
     }
-    loaderTimer.style.display = 'none';
+    loaderMonth.style.display = 'none';
 
     console.log(final_resultMonth);
     var options = {
