@@ -1,10 +1,10 @@
 const IndiantickersWeekly = document.getElementById('IndiantickersWeekly');
-// const loadExchange = document.getElementById('loaderExchange');
+const loaderTimer = document.getElementById('loaderTimer');
 
 IndiantickersWeekly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    // loadExchange.style.display = 'block';
+    loaderTimer.style.display = 'block';
     const req_data = document.getElementById('IndiantickerW').value;
     const updata=req_data.toUpperCase();
     console.log(updata);
@@ -67,7 +67,7 @@ function mergeWeeklyData() {
     for (var j = 0; j < valueWeek.length; j++) {
         final_result[j]['y'] = valueWeek[j];
     }
-    // loadExchange.style.display = 'none';
+    loaderTimer.style.display = 'none';
 
     console.log(final_result);
     var options = {
