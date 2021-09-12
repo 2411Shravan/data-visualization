@@ -9,9 +9,15 @@ IndiantickersMonthly.addEventListener('submit', (e) => {
     const updata=req_data.toUpperCase();
     console.log(updata);
 
-    getIndianWMonthlyData(updata);
+    getIndianMonthlyData(updata);
 });
 
-function getIndianWMonthlyData(getData){
+function getIndianMonthlyData(getData){
     console.log(getData);
+    var api='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol='+getData+'.BSE&apikey=WH75LQJ4BD7S15TO'
+   fetchIndianMonthlyData(api);
+}
+
+async function fetchIndianMonthlyData(API){
+    const response
 }
