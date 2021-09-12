@@ -56,23 +56,23 @@ function updateIndianMonthlyData(keys,values){
 }
 
 function mergeMonthlyData(){
-    for (var i = 0; i < keyWeek.length; i++) {
+    for (var i = 0; i < keyMonth.length; i++) {
         var resi = {};
         // console.log(objects [i]);
         resi['x'] = keyWeek[i];
         //console.log(i);
-        final_result.push(resi);
+        final_resultMonth.push(resi);
     }
 
-    for (var j = 0; j < valueWeek.length; j++) {
-        final_result[j]['y'] = valueWeek[j];
+    for (var j = 0; j < valueMonth.length; j++) {
+        final_resultMonth[j]['y'] = valueWeek[j];
     }
     loaderTimer.style.display = 'none';
 
-    console.log(final_result);
+    console.log(final_resultMonth);
     var options = {
         series: [{
-            data: final_result,
+            data: final_resultMonth,
         }],
         chart: {
             type: 'candlestick',
@@ -103,7 +103,7 @@ function mergeMonthlyData(){
         }
     };
 
-    const div = document.getElementById('IndianWeeklyChart');
+    const div = document.getElementById('IndianMonthlyChart');
 
 
     var chart = new ApexCharts(div, options);
