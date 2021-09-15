@@ -1,12 +1,12 @@
 {%extends"base.html"%} 
 {%block title%}
  Daily-Shares
- {%endblock%}
+{%endblock%}
 {%block content%}
- {% with messages = get_flashed_messages(with_categories=true) %}
-  {%if messages %} 
-  {%for category,message in messages%} 
-  {%if category == "warning" %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{%if messages %} 
+{%for category,message in messages%} 
+{%if category == "warning" %}
 <div class="alert text-center alert-warning  alert-dismissable fade show" role="alert">
 
     {{ message }}
@@ -27,8 +27,8 @@
 </div>
 {%endif%} 
 {%endfor%}
- {%endif%}
-  {% endwith %}
+{%endif%}
+{% endwith %}
     <div class="container">
         <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
             <strong>Hey {{user.username}}!</strong> After you submit your request, it may take some time to get responses since we have to deal with huge data.Till then read some interesting facts we've given to you in below info feed section
