@@ -133,44 +133,44 @@ def IndiaDailyShares():
 @login_required
 def UKDailyShares():
     if request.method == 'POST':
-        code= request.form['UKtickerD']
-        up=code.upper()
-        print(up)
-        api='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+up+'.LON&outputsize=full&apikey=WH75LQJ4BD7S15TO'
-        raw=requests.get(api)
-        raw_data=raw.json()
-        first_filter=raw_data['Time Series (Daily)']
-        first_keys=first_filter.keys()
-        print(len(first_keys))
-        for data in first_keys:
-            indiaDayKeys.append(data)
+        codei= request.form['UKticker']
+        upi=codei.upper()
+        print(upi)
+        # api='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+up+'.LON&outputsize=full&apikey=WH75LQJ4BD7S15TO'
+        # raw=requests.get(api)
+        # raw_data=raw.json()
+        # first_filter=raw_data['Time Series (Daily)']
+        # first_keys=first_filter.keys()
+        # print(len(first_keys))
+        # for data in first_keys:
+        #     indiaDayKeys.append(data)
 
-        first_values=first_filter.values()
-        print(len(first_values))
+        # first_values=first_filter.values()
+        # print(len(first_values))
 
-        for singledata in first_values:
-            values=[];
-            values.append(float(singledata['1. open']))
-            values.append(float(singledata['2. high']))
-            values.append(float(singledata['3. low']))
-            values.append(float(singledata['4. close']))
-            req={}
-            req['y']=values
-            indiaFinal.append(req)
+        # for singledata in first_values:
+        #     values=[];
+        #     values.append(float(singledata['1. open']))
+        #     values.append(float(singledata['2. high']))
+        #     values.append(float(singledata['3. low']))
+        #     values.append(float(singledata['4. close']))
+        #     req={}
+        #     req['y']=values
+        #     indiaFinal.append(req)
 
-        i=0
-        for data in indiaFinal:   
-            data['x']=indiaDayKeys[i]
-            i=i+1
+        # i=0
+        # for data in indiaFinal:   
+        #     data['x']=indiaDayKeys[i]
+        #     i=i+1
 
 
 
-        pprint(indiaFinal)
-        return render_template('/share-market/share/india/indiaDay.html',user=current_user,final_data=indiaFinal)
+        # pprint(indiaFinal)
+        # return render_template('/share-market/share/india/indiaDay.html',user=current_user,final_data=indiaFinal)
 
 
     num=random.randint(0,9)
     fact=facts[num]['fact']
 
-    return render_template('/share-market/share/india/indiaDay.html',user=current_user,fact=fact)
+    return render_template('/share-market/share/uk/ukdaily.html',user=current_user,fact=fact)
     
