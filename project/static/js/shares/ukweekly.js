@@ -2,7 +2,7 @@ const UKtickersWeekly = document.getElementById('UKtickersWeekly');
 // const loaderCycle = document.getElementById('loaderCycle');
 var week_dates = [];
 var week_ohlc = [];
-var final_weekl = [];
+var final_week = [];
 
 UKtickersWeekly.addEventListener('submit', (e) => {
 
@@ -35,14 +35,14 @@ function sortUKWeeklyData(datas){
     updateUKWeeklyData(ref_key, ref_val);
 }
 
-function updateWeeklyData(key, val) {
+function updateUKWeeklyData(key, val) {
     // console.log(key.length);
     // console.log(val.length);
     key.forEach(value => {
-        weekly_dates.push(value);
+        week_dates.push(value);
     });
 
-    console.log(weekly_dates);
+    console.log(week_dates);
 
     val.forEach(data => {
         var temp_arr = [];
@@ -50,30 +50,30 @@ function updateWeeklyData(key, val) {
         temp_arr.push(parseFloat(data['2. high']));
         temp_arr.push(parseFloat(data['3. low']));
         temp_arr.push(parseFloat(data['4. close']));
-        weekly_ohlc.push(temp_arr);
+        week_ohlc.push(temp_arr);
     });
     // console.log(ohlc);
-    mergeWeeklyData();
+    mergeUKWeeklyData();
 }
 
-function mergeWeeklyData() {
-    for (var i = 0; i < weekly_dates.length; i++) {
+function mergeUKWeeklyData() {
+    for (var i = 0; i < week_dates.length; i++) {
         var resi = {};
         // console.log(objects [i]);
-        resi['x'] = weekly_dates[i];
+        resi['x'] = week_dates[i];
         //console.log(i);
-        final_weekly.push(resi);
+        final_week.push(resi);
     }
 
-    for (var j = 0; j < weekly_ohlc.length; j++) {
-        final_weekly[j]['y'] = weekly_ohlc[j];
+    for (var j = 0; j < week_ohlc.length; j++) {
+        final_week[j]['y'] = week_ohlc[j];
     }
 
-    console.log(final_weekly);
+    console.log(final_week);
     loaderCycle.style.display = 'none';
     var options = {
         series: [{
-            data: final_weekly,
+            data: final_week,
         }],
         chart: {
             type: 'candlestick',
