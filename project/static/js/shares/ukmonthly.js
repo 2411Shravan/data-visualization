@@ -1,5 +1,5 @@
 const UKtickersMonthly = document.getElementById('UKtickersMonthly');
-// const loaderDouble = document.getElementById('loaderDouble');
+const loaderIndicator = document.getElementById('loaderIndicator');
 var uk_monthly_dates = [];
 var uk_monthly_ohlc = [];
 var uk_final_monthly = [];
@@ -7,7 +7,7 @@ var uk_final_monthly = [];
 UKtickersMonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    // loaderDouble.style.display = 'block';
+    loaderIndicator.style.display = 'block';
     const req_data = document.getElementById('UKtickerM').value;
     console.log(req_data);
     UKready_monthly_data(req_data);
@@ -70,7 +70,7 @@ function mergeUKMonthlyData(){
     }
 
     console.log(uk_final_monthly);
-    // loaderDouble.style.display = 'none';
+    loaderIndicator.style.display = 'none';
     var options = {
         series: [{
             data: uk_final_monthly,
