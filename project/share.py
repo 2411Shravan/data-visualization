@@ -103,6 +103,13 @@ def UKShares():
     
     return render_template('/share-market/intros/uk-Intro.html',user=current_user)
 
+
+@share_market.route('/share/canada-stockexchange/',methods=['GET','POST'])
+@login_required
+def CanadaShares():
+    
+    return render_template('/share-market/intros/canadaIntro.html',user=current_user)
+
 @share_market.route('/share/india-stockexchange/daily-data/',methods=['GET','POST'])
 @login_required
 def IndiaDailyShares():
