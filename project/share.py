@@ -80,6 +80,16 @@ def UKWeeklyShares():
     return render_template('/share-market/share/uk/ukweekly.html',user=current_user)
 
 
+@share_market.route('/share/uk-stockexchange/monthly-data/',methods=['GET','POST'])
+@login_required
+def UKMonthlyShares():
+    
+    return render_template('/share-market/share/uk/ukmonthly.html',user=current_user)
+
+
+
+
+
 @share_market.route('/share/india-stockexchange/weekly-data/',methods=['GET','POST'])
 @login_required
 def IndiaWeeklyShares():
