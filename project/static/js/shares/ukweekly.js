@@ -1,5 +1,5 @@
 const UKtickersWeekly = document.getElementById('UKtickersWeekly');
-// const loaderCycle = document.getElementById('loaderCycle');
+// const loaderTemplate = document.getElementById('loaderTemplate');
 var week_dates = [];
 var week_ohlc = [];
 var final_week = [];
@@ -7,7 +7,7 @@ var final_week = [];
 UKtickersWeekly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    // loaderCycle.style.display = 'block';
+    // loaderTemplate.style.display = 'block';
     const req_data = document.getElementById('UKtickerW').value;
     console.log(req_data);
     UK_weekly_data(req_data);
@@ -70,7 +70,7 @@ function mergeUKWeeklyData() {
     }
 
     console.log(final_week);
-    loaderCycle.style.display = 'none';
+    loaderTemplate.style.display = 'none';
     var options = {
         series: [{
             data: final_week,
