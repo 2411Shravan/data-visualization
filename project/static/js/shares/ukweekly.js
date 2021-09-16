@@ -7,32 +7,32 @@ var final_weekl = [];
 UKtickersWeekly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    loaderCycle.style.display = 'block';
-    const req_data = document.getElementById('tickerW').value;
+    // loaderCycle.style.display = 'block';
+    const req_data = document.getElementById('UKtickerW').value;
     console.log(req_data);
-    ready_weekly_data(req_data);
+    UK_weekly_data(req_data);
 });
 
-function ready_weekly_data(redata){
+function UK_weekly_data(redata){
     // console.log(redata);
     var str=redata.toUpperCase();
     console.log(str);
-    var api='https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol='+str+'&apikey=WH75LQJ4BD7S15TO';
-    fetchWeeklydata(api);
+    var api='https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol='+str+'.LON&apikey=WH75LQJ4BD7S15TO';
+    fetchUKWeeklydata(api);
 }
 
-async function fetchWeeklydata(API) {
+async function fetchUKWeeklydata(API) {
     const response =await fetch(API);
     const resposneData = await response.json();
     console.log(resposneData);
-    sortWeeklyData(resposneData);
+    sortUKWeeklyData(resposneData);
 }
 
-function sortWeeklyData(datas){
+function sortUKWeeklyData(datas){
     var redData = datas['Weekly Time Series'];
     var ref_val = Object.values(redData);
     var ref_key = Object.keys(redData);
-    updateWeeklyData(ref_key, ref_val);
+    updateUKWeeklyData(ref_key, ref_val);
 }
 
 function updateWeeklyData(key, val) {
