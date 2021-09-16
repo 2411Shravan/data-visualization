@@ -65,7 +65,7 @@ function mergeUKMonthlyData(){
         uk_final_monthly.push(resi);
     }
 
-    for (var j = 0; j < monthly_ohlc.length; j++) {
+    for (var j = 0; j < uk_monthly_ohlc.length; j++) {
         uk_final_monthly[j]['y'] = uk_monthly_ohlc[j];
     }
 
