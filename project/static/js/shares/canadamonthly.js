@@ -104,7 +104,7 @@ function mergecanadaMonthlyData(){
         }
     };
 
-    const div = document.getElementById('UKMonthlyChart');
+    const div = document.getElementById('canadamonthlyChart');
 
 
     var chart = new ApexCharts(div, options);
