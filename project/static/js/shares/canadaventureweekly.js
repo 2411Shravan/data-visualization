@@ -32,6 +32,7 @@ function sortcanadaVentureWeeklyData(datas){
     var redData = datas['Weekly Time Series'];
     var ref_val = Object.values(redData);
     var ref_key = Object.keys(redData);
+    
     updatecanadaVentureWeeklyData(ref_key, ref_val);
 }
 
@@ -60,7 +61,7 @@ function mergecanadaVentureWeeklyData() {
     for (var i = 0; i < canadaventure_week_dates.length; i++) {
         var resi = {};
         // console.log(objects [i]);
-        resi['x'] = canada_week_dates[i];
+        resi['x'] = canadaventure_week_dates[i];
         //console.log(i);
         canadaventure_final_week.push(resi);
     }
@@ -104,7 +105,7 @@ function mergecanadaVentureWeeklyData() {
         }
     };
 
-    const div = document.getElementById('canadaVenturemonthlyChart');
+    const div = document.getElementById('canadaVentureWeeklyChart');
 
 
     var chart = new ApexCharts(div, options);
