@@ -1,41 +1,41 @@
-const UKtickersMonthly = document.getElementById('UKtickersMonthly');
+const Canadatickersmonthly = document.getElementById('Canadatickersmonthly');
 const loaderIndicator = document.getElementById('loaderIndicator');
-var uk_monthly_dates = [];
-var uk_monthly_ohlc = [];
-var uk_final_monthly = [];
+var canada_monthly_dates = [];
+var canada_monthly_ohlc = [];
+var canada_final_monthly = [];
 
-UKtickersMonthly.addEventListener('submit', (e) => {
+Canadatickersmonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
     loaderIndicator.style.display = 'block';
     const req_data = document.getElementById('UKtickerM').value;
     console.log(req_data);
-    UKready_monthly_data(req_data);
+    canadaready_monthly_data(req_data);
 });
 
-function UKready_monthly_data(rd){
+function canadaready_monthly_data(rd){
     var stre=rd.toUpperCase();
     console.log(stre);
-    var api='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+stre+'.LON&apikey=WH75LQJ4BD7S15TO';
-    fetchMonthlyData(api);
+    var api='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+stre+'.TRT&apikey=WH75LQJ4BD7S15TO';
+    fetchcanadaMonthlyData(api);
 }
 
-async function fetchMonthlyData(API){
+async function fetchcanadaMonthlyData(API){
     const response = await fetch(API);
     const responseData = await response.json();
     // console.log(responseData);
-    sortMontlyUKData(responseData);
+    sortMontlycanadaData(responseData);
 }
 
-function sortMontlyUKData(responses){
+function sortMontlycanadaData(responses){
     var redData = responses['Monthly Adjusted Time Series'];
     var ref_val = Object.values(redData);
     var ref_key = Object.keys(redData);
     // console.log(ref_key,ref_val);
-    updateMonthlyUKData(ref_key, ref_val);
+    updateMonthlycanadaData(ref_key, ref_val);
 }
 
-function updateMonthlyUKData(key, val) {
+function updateMonthlycanadaData(key, val) {
     // console.log(key.length);
     // console.log(val.length);
     key.forEach(value => {
@@ -53,10 +53,10 @@ function updateMonthlyUKData(key, val) {
         uk_monthly_ohlc.push(temp_arr);
     });
     console.log(uk_monthly_ohlc);
-    mergeUKMonthlyData();
+    mergecanadaMonthlyData();
 }
 
-function mergeUKMonthlyData(){
+function mergecanadaMonthlyData(){
     for (var i = 0; i < uk_monthly_dates.length; i++) {
         var resi = {};
         // console.log(objects [i]);
