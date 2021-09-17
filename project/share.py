@@ -114,6 +114,13 @@ def CanadaWeeklyShares():
     return render_template('/share-market/share/canada/canadaweek.html',user=current_user)
 
 
+@share_market.route('/share/canada-stockexchange/monthly-data/',methods=['GET','POST'])
+@login_required
+def CanadaMonthlyShares():
+    
+    return render_template('/share-market/share/canada/canadamonthly.html',user=current_user)
+
+
 @share_market.route('/share/uk-stockexchange/',methods=['GET','POST'])
 @login_required
 def UKShares():
