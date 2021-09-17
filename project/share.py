@@ -20,6 +20,17 @@ def shares():
 indiaDayKeys=[]
 indiaDayValues=[]
 indiaFinal=[]
+
+
+canadaDayKeys=[]
+canadaDayValues=[]
+canadaFinal=[]
+
+
+UKDayKeys=[]
+UKDayValues=[]
+UKFinal=[]
+
 facts=[
     {'fact':'McDonald’s once made bubblegum-flavored broccoli'},
     {'fact':'Some fungi create zombies, then control their minds'},
@@ -171,7 +182,7 @@ def CanadaDailyShares():
         first_keys=first_filter.keys()
         print(len(first_keys))
         for data in first_keys:
-            indiaDayKeys.append(data)
+            canadaDayKeys.append(data)
 
         first_values=first_filter.values()
         print(len(first_values))
@@ -184,17 +195,17 @@ def CanadaDailyShares():
             values.append(float(singledata['4. close']))
             req={}
             req['y']=values
-            indiaFinal.append(req)
+            canadaFinal.append(req)
 
         i=0
-        for data in indiaFinal:   
-            data['x']=indiaDayKeys[i]
+        for data in canadaFinal:   
+            data['x']=canadaDayKeys[i]
             i=i+1
 
 
 
         pprint(indiaFinal)
-        return render_template('/share-market/share/canada/canadadaily.html',user=current_user,final_data=indiaFinal)
+        return render_template('/share-market/share/canada/canadadaily.html',user=current_user,final_data=canadaFinal)
 
 
     num=random.randint(0,9)
@@ -216,7 +227,7 @@ def UKDailyShares():
         first_keys=first_filter.keys()
         print(len(first_keys))
         for data in first_keys:
-            indiaDayKeys.append(data)
+            UKDayKeys.append(data)
 
         first_values=first_filter.values()
         print(len(first_values))
@@ -229,17 +240,17 @@ def UKDailyShares():
             values.append(float(singledata['4. close']))
             req={}
             req['y']=values
-            indiaFinal.append(req)
+            UKFinal.append(req)
 
         i=0
-        for data in indiaFinal:   
-            data['x']=indiaDayKeys[i]
+        for data in UKFinal:   
+            data['x']=UKDayKeys[i]
             i=i+1
 
 
 
         pprint(indiaFinal)
-        return render_template('/share-market/share/uk/ukdaily.html',user=current_user,final_data=indiaFinal)
+        return render_template('/share-market/share/uk/ukdaily.html',user=current_user,final_data=UKFinal)
 
 
     num=random.randint(0,9)
