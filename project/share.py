@@ -164,7 +164,7 @@ def CanadaDailyShares():
         code= request.form['Canadaticker']
         up=code.upper()
         print(up)
-        api='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+up+'.BSE&outputsize=full&apikey=WH75LQJ4BD7S15TO'
+        api='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+up+'.TRT&outputsize=full&apikey=WH75LQJ4BD7S15TO'
         raw=requests.get(api)
         raw_data=raw.json()
         first_filter=raw_data['Time Series (Daily)']
