@@ -126,6 +126,12 @@ def CanadaVentureWeeklyShares():
     
     return render_template('/share-market/share/canadaVenture/canadaVentureWeekly.html',user=current_user)
 
+@share_market.route('/share/canadaVenture-stockexchange/monthly-data/',methods=['GET','POST'])
+@login_required
+def CanadaVentureMonthlyShares():
+    
+    return render_template('/share-market/share/canadaVenture/canadaVentureMonthly.html',user=current_user)
+
 
 @share_market.route('/share/canada-stockexchange/monthly-data/',methods=['GET','POST'])
 @login_required

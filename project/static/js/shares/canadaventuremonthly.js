@@ -8,34 +8,34 @@ CanadaVenturetickersMonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
     loaderTurning.style.display = 'block';
-    const req_data = document.getElementById('CanadatickerM').value;
+    const req_data = document.getElementById('CanadaVenturetickerM').value;
     console.log(req_data);
-    canadaready_monthly_data(req_data);
+    canadaventureready_monthly_data(req_data);
 });
 
-function canadaready_monthly_data(rd){
+function canadaventureready_monthly_data(rd){
     var stre=rd.toUpperCase();
     console.log(stre);
     var api='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+stre+'.TRV&apikey=WH75LQJ4BD7S15TO';
-    fetchcanadaMonthlyData(api);
+    fetchcanadaventureMonthlyData(api);
 }
 
-async function fetchcanadaMonthlyData(API){
+async function fetchcanadaventureMonthlyData(API){
     const response = await fetch(API);
     const responseData = await response.json();
     // console.log(responseData);
-    sortMontlycanadaData(responseData);
+    sortMontlycanadaventureData(responseData);
 }
 
-function sortMontlycanadaData(responses){
+function sortMontlycanadaventureData(responses){
     var redData = responses['Monthly Adjusted Time Series'];
     var ref_val = Object.values(redData);
     var ref_key = Object.keys(redData);
     // console.log(ref_key,ref_val);
-    updateMonthlycanadaData(ref_key, ref_val);
+    updateMonthlycanadaventureData(ref_key, ref_val);
 }
 
-function updateMonthlycanadaData(key, val) {
+function updateMonthlycanadaventureData(key, val) {
     // console.log(key.length);
     // console.log(val.length);
     key.forEach(value => {
@@ -53,14 +53,14 @@ function updateMonthlycanadaData(key, val) {
         canadaventure_monthly_ohlc.push(temp_arr);
     });
     console.log(canadaventure_monthly_ohlc);
-    mergecanadaMonthlyData();
+    mergecanadaventureMonthlyData();
 }
 
-function mergecanadaMonthlyData(){
+function mergecanadaventureMonthlyData(){
     for (var i = 0; i < canadaventure_monthly_dates.length; i++) {
         var resi = {};
         // console.log(objects [i]);
-        resi['x'] = canada_monthly_dates[i];
+        resi['x'] = canadaventure_monthly_dates[i];
         //console.log(i);
         canadaventure_final_monthly.push(resi);
     }
