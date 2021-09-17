@@ -1,5 +1,5 @@
 const Canadatickersmonthly = document.getElementById('Canadatickersmonthly');
-const loaderIndicator = document.getElementById('loaderIndicator');
+// const loaderIndicator = document.getElementById('loaderIndicator');
 var canada_monthly_dates = [];
 var canada_monthly_ohlc = [];
 var canada_final_monthly = [];
@@ -7,8 +7,8 @@ var canada_final_monthly = [];
 Canadatickersmonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    loaderIndicator.style.display = 'block';
-    const req_data = document.getElementById('UKtickerM').value;
+    // loaderIndicator.style.display = 'block';
+    const req_data = document.getElementById('CanadatickerM').value;
     console.log(req_data);
     canadaready_monthly_data(req_data);
 });
@@ -70,7 +70,7 @@ function mergecanadaMonthlyData(){
     }
 
     console.log(canada_final_monthly);
-    loaderIndicator.style.display = 'none';
+    // loaderIndicator.style.display = 'none';
     var options = {
         series: [{
             data: canada_final_monthly,
