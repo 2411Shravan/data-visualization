@@ -129,26 +129,7 @@ def resetprofile(id):
             except:
                 flash("Error ! ",category="Danger")
 
-
-
-            
-
-
         print(user_name)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
