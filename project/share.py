@@ -161,7 +161,7 @@ def IndiaDailyShares():
 @login_required
 def CanadaDailyShares():
     if request.method == 'POST':
-        code= request.form['IndiantickerI']
+        code= request.form['Canadaticker']
         up=code.upper()
         print(up)
         api='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+up+'.BSE&outputsize=full&apikey=WH75LQJ4BD7S15TO'
