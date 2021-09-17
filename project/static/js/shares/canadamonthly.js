@@ -39,7 +39,7 @@ function updateMonthlycanadaData(key, val) {
     // console.log(key.length);
     // console.log(val.length);
     key.forEach(value => {
-        uk_monthly_dates.push(value);
+        canada_monthly_dates.push(value);
     });
 
     console.log(uk_monthly_dates);
@@ -50,30 +50,30 @@ function updateMonthlycanadaData(key, val) {
         temp_arr.push(parseFloat(data['2. high']));
         temp_arr.push(parseFloat(data['3. low']));
         temp_arr.push(parseFloat(data['4. close']));
-        uk_monthly_ohlc.push(temp_arr);
+        canada_monthly_ohlc.push(temp_arr);
     });
-    console.log(uk_monthly_ohlc);
+    console.log(canada_monthly_ohlc);
     mergecanadaMonthlyData();
 }
 
 function mergecanadaMonthlyData(){
-    for (var i = 0; i < uk_monthly_dates.length; i++) {
+    for (var i = 0; i < canada_monthly_dates.length; i++) {
         var resi = {};
         // console.log(objects [i]);
-        resi['x'] = uk_monthly_dates[i];
+        resi['x'] = canada_monthly_dates[i];
         //console.log(i);
-        uk_final_monthly.push(resi);
+        canada_final_monthly.push(resi);
     }
 
-    for (var j = 0; j < uk_monthly_ohlc.length; j++) {
-        uk_final_monthly[j]['y'] = uk_monthly_ohlc[j];
+    for (var j = 0; j < canada_monthly_ohlc.length; j++) {
+        canada_final_monthly[j]['y'] = canada_monthly_ohlc[j];
     }
 
-    console.log(uk_final_monthly);
+    console.log(canada_final_monthly);
     loaderIndicator.style.display = 'none';
     var options = {
         series: [{
-            data: uk_final_monthly,
+            data: canada_final_monthly,
         }],
         chart: {
             type: 'candlestick',
