@@ -1,5 +1,5 @@
 const CanadaVenturetickersMonthly = document.getElementById('CanadaVenturetickersMonthly');
-const loaderTurning = document.getElementById('loaderTurning');
+// const loaderTurning = document.getElementById('loaderTurning');
 var canadaventure_monthly_dates = [];
 var canadaventure_monthly_ohlc = [];
 var canadaventure_final_monthly = [];
@@ -7,7 +7,7 @@ var canadaventure_final_monthly = [];
 CanadaVenturetickersMonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    loaderTurning.style.display = 'block';
+    // loaderTurning.style.display = 'block';
     const req_data = document.getElementById('CanadaVenturetickerM').value;
     console.log(req_data);
     canadaventureready_monthly_data(req_data);
@@ -66,11 +66,11 @@ function mergecanadaventureMonthlyData(){
     }
 
     for (var j = 0; j < canadaventure_monthly_ohlc.length; j++) {
-        canada_final_monthly[j]['y'] = canada_monthly_ohlc[j];
+        canadaventure_final_monthly[j]['y'] = canadaventure_monthly_ohlc[j];
     }
 
     console.log(canadaventure_final_monthly);
-    loaderTurning.style.display = 'none';
+    // loaderTurning.style.display = 'none';
     var options = {
         series: [{
             data: canadaventure_final_monthly,
