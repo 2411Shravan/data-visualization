@@ -1,5 +1,5 @@
 const CanadaVenturetickersweekly = document.getElementById('CanadaVenturetickersweekly');
-// const loaderCoffee = document.getElementById('loaderCoffee');
+// const loaderGlass = document.getElementById('loaderGlass');
 var canadaventure_week_dates = [];
 var canadaventure_week_ohlc = [];
 var canadaventure_final_week = [];
@@ -7,7 +7,7 @@ var canadaventure_final_week = [];
 CanadaVenturetickersweekly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    // loaderCoffee.style.display = 'block';
+    // loaderGlass.style.display = 'block';
     const req_data = document.getElementById('CanadaVenturetickerW').value;
     console.log(req_data);
     canadaventure_weekly_data(req_data);
@@ -71,7 +71,7 @@ function mergecanadaVentureWeeklyData() {
     }
 
     console.log(canadaventure_final_week);
-    // loaderCoffee.style.display = 'none';
+    // loaderGlass.style.display = 'none';
     var options = {
         series: [{
             data: canadaventure_final_week,
