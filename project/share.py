@@ -127,6 +127,12 @@ def UKShares():
     
     return render_template('/share-market/intros/uk-Intro.html',user=current_user)
 
+@share_market.route('/share/canadaVenture-stockexchange/',methods=['GET','POST'])
+@login_required
+def CanadaVentureShares():
+    
+    return render_template('/share-market/intros/canadaventure.html',user=current_user)
+
 
 @share_market.route('/share/canada-stockexchange/',methods=['GET','POST'])
 @login_required
