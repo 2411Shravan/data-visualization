@@ -1,5 +1,5 @@
 const CanadaVenturetickersMonthly = document.getElementById('CanadaVenturetickersMonthly');
-// const loaderDice = document.getElementById('loaderDice');
+const loaderDice = document.getElementById('loaderDice');
 var canadaventure_monthly_dates = [];
 var canadaventure_monthly_ohlc = [];
 var canadaventure_final_monthly = [];
@@ -7,7 +7,7 @@ var canadaventure_final_monthly = [];
 CanadaVenturetickersMonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    // loaderDice.style.display = 'block';
+    loaderDice.style.display = 'block';
     const req_data = document.getElementById('CanadaVenturetickerM').value;
     console.log(req_data);
     canadaventureready_monthly_data(req_data);
@@ -70,7 +70,7 @@ function mergecanadaventureMonthlyData(){
     }
 
     console.log(canadaventure_final_monthly);
-    // loaderDice.style.display = 'none';
+    loaderDice.style.display = 'none';
     var options = {
         series: [{
             data: canadaventure_final_monthly,
