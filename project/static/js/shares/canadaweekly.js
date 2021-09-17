@@ -1,5 +1,5 @@
 const CanadatickersWeekly = document.getElementById('CanadatickersWeekly');
-// const loaderTemplate = document.getElementById('loaderTemplate');
+// const loaderCoffee = document.getElementById('loaderCoffee');
 var canada_week_dates = [];
 var canada_week_ohlc = [];
 var canada_final_week = [];
@@ -7,7 +7,7 @@ var canada_final_week = [];
 CanadatickersWeekly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    // loaderTemplate.style.display = 'block';
+    // loaderCoffee.style.display = 'block';
     const req_data = document.getElementById('CanadatickerW').value;
     console.log(req_data);
     canada_weekly_data(req_data);
@@ -70,7 +70,7 @@ function mergecanadaWeeklyData() {
     }
 
     console.log(canada_final_week);
-    // loaderTemplate.style.display = 'none';
+    // loaderCoffee.style.display = 'none';
     var options = {
         series: [{
             data: canada_final_week,
