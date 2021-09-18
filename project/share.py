@@ -144,6 +144,13 @@ def GermanWeeklyShares():
     
     return render_template('/share-market/share/german/germanWeekly.html',user=current_user)
 
+
+@share_market.route('/share/german-stockexchange/monthly-data/',methods=['GET','POST'])
+@login_required
+def GermanMonthlyShares():
+    
+    return render_template('/share-market/share/german/germanMonthly.html',user=current_user)
+
 @share_market.route('/share/canadaVenture-stockexchange/monthly-data/',methods=['GET','POST'])
 @login_required
 def CanadaVentureMonthlyShares():
