@@ -64,6 +64,13 @@ def USshares():
     return render_template('/share-market/intros/usIntro.html',user=current_user)
 
 
+@share_market.route('/share/shenzen-stockexchange/',methods=['GET','POST'])
+@login_required
+def Shenzenshares():
+   
+    return render_template('/share-market/intros/shenzenintro.html',user=current_user)
+
+
 @share_market.route('/share/unitedstates-stockexchange/daily-data/',methods=['GET','POST'])
 @login_required
 def USdailydata():
@@ -532,3 +539,51 @@ def ShanghaiDailyShares():
     fact=facts[num]['fact']
 
     return render_template('/share-market/share/shanghai/daily.html',user=current_user,fact=fact)
+
+
+
+
+@share_market.route('/share/shenzen-stockexchange/daily-data/',methods=['GET','POST'])
+@login_required
+def ShenzenDailyShares():
+    if request.method == 'POST':
+        code= request.form['Shenzenticker']
+        up=code.upper()
+        print(up)
+        api='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+up+'.SHZ&outputsize=full&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        first_filter=raw_data['Time Series (Daily)']
+        first_keys=first_filter.keys()
+        print(len(first_keys))
+        for data in first_keys:
+            indiaDayKeys.append(data)
+
+        first_values=first_filter.values()
+        print(len(first_values))
+
+        for singledata in first_values:
+            values=[];
+            values.append(float(singledata['1. open']))
+            values.append(float(singledata['2. high']))
+            values.append(float(singledata['3. low']))
+            values.append(float(singledata['4. close']))
+            req={}
+            req['y']=values
+            indiaFinal.append(req)
+
+        i=0
+        for data in indiaFinal:   
+            data['x']=indiaDayKeys[i]
+            i=i+1
+
+
+
+        pprint(indiaFinal)
+        return render_template('/share-market/share/shenzen/daily.html',user=current_user,final_data=indiaFinal)
+
+
+    num=random.randint(0,9)
+    fact=facts[num]['fact']
+
+    return render_template('/share-market/share/shenzen/daily.html',user=current_user,fact=fact)
