@@ -237,9 +237,16 @@ def shanghaiMonthlyShares():
 
 @share_market.route('/share/shenzen-stockexchange/weekly-data/',methods=['GET','POST'])
 @login_required
-def ShenzenMonthlyShares():
+def ShenzenWeeklyShares():
     
     return render_template('/share-market/share/shenzen/weekly.html',user=current_user)
+
+
+@share_market.route('/share/shenzen-stockexchange/monthly-data/',methods=['GET','POST'])
+@login_required
+def ShenzenMonthlyShares():
+    
+    return render_template('/share-market/share/shenzen/monthly.html',user=current_user)
 
 
 
