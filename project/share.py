@@ -135,6 +135,14 @@ def IndiaWeeklyShares():
     
     return render_template('/share-market/share/india/indiaWeekly.html',user=current_user)
 
+
+
+@share_market.route('/share/shanghai-stockexchange/weekly-data/',methods=['GET','POST'])
+@login_required
+def ShanghaiWeeklyShares():
+    
+    return render_template('/share-market/share/shanghai/weekly.html',user=current_user)
+
 @share_market.route('/share/canada-stockexchange/weekly-data/',methods=['GET','POST'])
 @login_required
 def CanadaWeeklyShares():
