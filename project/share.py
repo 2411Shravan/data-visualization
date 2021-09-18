@@ -217,6 +217,18 @@ def CanadaVentureMonthlyShares():
     return render_template('/share-market/share/canadaVenture/canadaVentureMonthly.html',user=current_user)
 
 
+
+
+@share_market.route('/share/shanghai-stockexchange/monthly-data/',methods=['GET','POST'])
+@login_required
+def shanghaiMonthlyShares():
+    
+    return render_template('/share-market/share/shanghai/monthly.html',user=current_user)
+
+
+    
+
+
 @share_market.route('/share/canada-stockexchange/monthly-data/',methods=['GET','POST'])
 @login_required
 def CanadaMonthlyShares():
