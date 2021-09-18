@@ -103,6 +103,15 @@ def IndiaMonthlyShares():
     
     return render_template('/share-market/share/india/indiaMonthly.html',user=current_user)
 
+
+@share_market.route('/share/shanghai-stockexchange/',methods=['GET','POST'])
+@login_required
+def ShanghaiShares():
+    
+    return render_template('/share-market/intros/shanghaiintro.html',user=current_user)
+
+
+
 @share_market.route('/share/uk-stockexchange/weekly-data/',methods=['GET','POST'])
 @login_required
 def UKWeeklyShares():
