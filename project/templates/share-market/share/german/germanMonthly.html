@@ -27,18 +27,38 @@
 </div>
 {%endif%} 
 {%endfor%}
- {%endif%}
-  {% endwith %}
+{%endif%}
+{% endwith %}
+
+<div class="container">
+    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+        <strong>Hey {{user.username}}!</strong> After you submit your request, it may take some time to get responses since we have to deal with huge data.Till then read some interesting facts we've given to you in below info feed section
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      {%if fact%}
+      <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
+        <strong>{{user.username}}</strong> Did you know that {{fact}} ?
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {%endif%}
+
+</div>
+
 
 
 <div class='container'>
     <div class="container mt-5 px-lg-5">
-        <form id='Canadatickersmonthly' method='post'>
+        <form id='Germantickersmonthly' method='post'>
             <div class="card">
                 <div class="card-body">
                     <div class="mb-2">
                         <label class="form-label">FirmCode/Ticker</label>
-                        <input type="text" name='CanadatickerM' id='CanadatickerM' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
+                        <input type="text" name='GermantickerM' id='GermantickerM' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
                     </div>
                     <button type="submit" class="btn btn-dark w-100">Get Data</button>
 
@@ -53,13 +73,31 @@
         <span class="loader" id='loaderTurning'></span>
     </div>
 
-    <div class='cardee container mt-5 px-lg-5 mb-3' id='dshow'>
-        <div class='container mt-5 px-lg-5'>
-            <div id="canadamonthlyChart" class='pt-3 pb-2 pl-2'></div>
-        </div>
-    </div>
 
 
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Open</th>
+            <th scope="col">High</th>
+            <th scope="col">Low</th>
+            <th scope="col">Close</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for data in final_data%}
+            <tr>
+                <td>{{data['x']}}</td>
+                <td>{{data['y'][0]}}</td>
+                <td>{{data['y'][1]}}</td>
+                <td>{{data['y'][2]}}</td>
+                <td>{{data['y'][3]}}</td>
+              </tr>
+            {%endfor%}
+
+        </tbody>
+      </table>
     <style>
         .cardee {
             background-color: #ffffff;
@@ -69,59 +107,11 @@
             border: 1px solid rgba( 0, 0, 0, 0.18);
             color: rgb(0, 0, 0.4);
         }
-        .loader {
-  width: 4px;
-  height: 86px;
-  background: rgb(56, 56, 56);
-  margin: auto;
-  position: relative;
-  display:none;
-  animation: shake 1s linear infinite alternate,
-             lightup 1s linear infinite;
-  transform-origin: 0 0;
-}
 
-.loader::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 16px;
-  box-sizing:border-box;
-  border: 5px solid #FF3D00;
-  border-top: none;
-  border-radius: 0 0 20px 20px;
-}
-.loader::after {
-  content: '';
-  left: 50%;
-  bottom: 0;
-  position: absolute;
-  transform: translateX(-50%);
-  width: 64px;
-  height: 32px;
-  border-radius: 50px 50px 0 0;
-  background: rgb(48, 48, 48);
-}
-
-@keyframes shake {
-  0% { transform: rotate(10deg)  }
-  100% { transform: rotate(-10deg)  }
-}
-@keyframes lightup {
-  0% ,20% , 40% {
-    opacity: 0
-  }
-  10%, 30% , 50% , 100% {
-    opacity: 1
-  }
-}
     
 
     </style>
 
 
 
-    {%endblock%}
+{%endblock%}

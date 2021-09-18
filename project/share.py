@@ -148,8 +148,50 @@ def GermanWeeklyShares():
 @share_market.route('/share/german-stockexchange/monthly-data/',methods=['GET','POST'])
 @login_required
 def GermanMonthlyShares():
-    
-    return render_template('/share-market/share/german/germanMonthly.html',user=current_user)
+    if request.method == 'POST':
+        codei= request.form['GermantickerM']
+        upi=codei.upper()
+        print(upi)
+        api='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+upi+'.DEX&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        first_filter=raw_data['Monthly Adjusted Time Series']
+        first_keys=first_filter.keys()
+        print(len(first_keys))
+        for data in first_keys:
+            germanDayKeys.append(data)
+
+        first_values=first_filter.values()
+        print(len(first_values))
+        open=[]
+        high=[]
+        low=[]
+        close=[]
+        for singledata in first_values:
+            values=[];
+            values.append(float(singledata['1. open']))
+            values.append(float(singledata['2. high']))
+            values.append(float(singledata['3. low']))
+            values.append(float(singledata['4. close']))
+            req={}
+            req['y']=values
+            germanFinal.append(req)
+
+        i=0
+        for data in germanFinal:   
+            data['x']=germanDayKeys[i]
+            i=i+1
+
+
+
+        pprint(germanFinal)
+        return render_template('/share-market/share/german/germanMonthly.html',user=current_user,final_data=germanFinal)
+
+
+    num=random.randint(0,9)
+    fact=facts[num]['fact']
+
+    return render_template('/share-market/share/german/germanMonthly.html',user=current_user,fact=fact)
 
 @share_market.route('/share/canadaVenture-stockexchange/monthly-data/',methods=['GET','POST'])
 @login_required
