@@ -1,5 +1,5 @@
 const shanghaitickersMonthly = document.getElementById('shanghaitickersMonthly');
-// const loaderSpark = document.getElementById('loaderSpark');
+const loaderCycleSpinner = document.getElementById('loaderCycleSpinner');
 var china_shanghai_monthly_dates = [];
 var china_shanghai_monthly_ohlc = [];
 var china_shanghai_final_monthly = [];
@@ -7,7 +7,7 @@ var china_shanghai_final_monthly = [];
 shanghaitickersMonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    // loaderSpark.style.display = 'block';
+    loaderCycleSpinner.style.display = 'block';
     const req_data = document.getElementById('shanghaitickerM').value;
     console.log(req_data);
     china_shanghaiready_monthly_data(req_data);
@@ -70,7 +70,7 @@ function china_mergeshanghaiMonthlyData(){
     }
 
     console.log(china_shanghai_final_monthly);
-    // loaderSpark.style.display = 'none';
+    loaderCycleSpinner.style.display = 'none';
     var options = {
         series: [{
             data: china_shanghai_final_monthly,
