@@ -38,6 +38,12 @@ UKDayKeys=[]
 UKDayValues=[]
 UKFinal=[]
 
+
+
+germanDayKeys=[]
+germanDayValues=[]
+germanFinal=[]
+
 facts=[
     {'fact':'McDonald’s once made bubblegum-flavored broccoli'},
     {'fact':'Some fungi create zombies, then control their minds'},
@@ -84,6 +90,12 @@ def USmonthlydata():
 def IndiaShares():
     
     return render_template('/share-market/intros/IndiaIntro.html',user=current_user)
+
+@share_market.route('/share/german-stockexchange/',methods=['GET','POST'])
+@login_required
+def GermanShares():
+    
+    return render_template('/share-market/intros/germanintro.html',user=current_user)
 
 @share_market.route('/share/india-stockexchange/monthly-data/',methods=['GET','POST'])
 @login_required
@@ -342,3 +354,51 @@ def CanadaVentureDailyShares():
     fact=facts[num]['fact']
 
     return render_template('/share-market/share/canadaVenture/canadaVentureDaily.html',user=current_user,fact=fact)
+
+
+
+
+@share_market.route('/share/german-stockexchange/daily-data/',methods=['GET','POST'])
+@login_required
+def GermanDailyShares():
+    if request.method == 'POST':
+        codei= request.form['Germanticker']
+        upi=codei.upper()
+        print(upi)
+        api='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+upi+'.DEX&outputsize=full&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        first_filter=raw_data['Time Series (Daily)']
+        first_keys=first_filter.keys()
+        print(len(first_keys))
+        for data in first_keys:
+            germanDayKeys.append(data)
+
+        first_values=first_filter.values()
+        print(len(first_values))
+
+        for singledata in first_values:
+            values=[];
+            values.append(float(singledata['1. open']))
+            values.append(float(singledata['2. high']))
+            values.append(float(singledata['3. low']))
+            values.append(float(singledata['4. close']))
+            req={}
+            req['y']=values
+            germanFinal.append(req)
+
+        i=0
+        for data in germanFinal:   
+            data['x']=germanDayKeys[i]
+            i=i+1
+
+
+
+        pprint(germanFinal)
+        return render_template('/share-market/share/german/germanDaily.html',user=current_user,final_data=germanFinal)
+
+
+    num=random.randint(0,9)
+    fact=facts[num]['fact']
+
+    return render_template('/share-market/share/german/germanDaily.html',user=current_user,fact=fact)
