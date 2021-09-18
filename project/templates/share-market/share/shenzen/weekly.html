@@ -50,12 +50,12 @@
     </div>
 
     <div class='container' style=' margin-top:30px;display:flex;justify-content:center;align-items:center'>
-        <span class="loader" id='loaderSpark'></span>
+        <span class="loader" id='loaderMouse'></span>
     </div>
 
     <div class='cardee container mt-5 px-lg-5 mb-3' id='dshow'>
         <div class='container mt-5 px-lg-5'>
-            <div id="shanghaiWeeklyChart" class='pt-3 pb-2 pl-2'></div>
+            <div id="shenzenWeeklyChart" class='pt-3 pb-2 pl-2'></div>
         </div>
     </div>
 
@@ -70,7 +70,49 @@
             color: rgb(0, 0, 0.4);
         }
 
-  
+        .loader {
+  width: 48px;
+  height: 78px;
+  position: relative;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  margin: auto;
+  display:none;
+  border-radius: 50% 50% 50% 50% / 25% 25% 25% 25%;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: rgb(0, 0, 0);
+  border-radius: 10px;
+  animation: scrollDown 1.5s linear infinite;
+}
+@keyframes scrollDown {
+  0% {
+    top: 15px;
+    height: 4px;
+    opacity: 1;
+  }
+  33% {
+    top: 15px;
+    height: 40px;
+  }
+  66% {
+    top: 50px;
+    height: 10px;
+    opacity: 1;
+  }
+  100% {
+    top: 56px;
+    height: 4px;
+    opacity: 0;
+  }
+}
 
     </style>
 

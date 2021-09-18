@@ -233,7 +233,24 @@ def shanghaiMonthlyShares():
     return render_template('/share-market/share/shanghai/monthly.html',user=current_user)
 
 
+
+
+@share_market.route('/share/shenzen-stockexchange/weekly-data/',methods=['GET','POST'])
+@login_required
+def ShenzenWeeklyShares():
     
+    return render_template('/share-market/share/shenzen/weekly.html',user=current_user)
+
+
+@share_market.route('/share/shenzen-stockexchange/monthly-data/',methods=['GET','POST'])
+@login_required
+def ShenzenMonthlyShares():
+    
+    return render_template('/share-market/share/shenzen/monthly.html',user=current_user)
+
+
+
+
 
 
 @share_market.route('/share/canada-stockexchange/monthly-data/',methods=['GET','POST'])
