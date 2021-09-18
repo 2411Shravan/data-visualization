@@ -52,12 +52,12 @@
 
 <div class='container'>
     <div class="container mt-5 px-lg-5">
-        <form id='ShanghaitickersIntraday' method='post'>
+        <form id='ShenzentickersIntraday' method='post'>
             <div class="card">
                 <div class="card-body">
                     <div class="mb-2">
                         <label class="form-label">FirmCode/Ticker</label>
-                        <input type="text" name='Shanghaiticker' id='Shanghaiticker' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
+                        <input type="text" name='Shenzenticker' id='Shenzenticker' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
                     </div>
                     <button type="submit" class="btn btn-dark w-100">Get Data</button>
 
@@ -72,7 +72,7 @@
 
     <div class='cardee container mt-5 px-lg-5 mb-3' id='dshow'>
         <div class='container mt-5 px-lg-5'>
-            <div id="ShanghaiDailyChart" class='pt-3 pb-2 pl-2'></div>
+            <div id="ShenzeniDailyChart" class='pt-3 pb-2 pl-2'></div>
         </div>
     </div>
 
@@ -110,7 +110,7 @@
         }
     };
 
-    const div = document.getElementById('ShanghaiDailyChart');
+    const div = document.getElementById('ShenzeniDailyChart');
 
 
     var chart = new ApexCharts(div, options);
