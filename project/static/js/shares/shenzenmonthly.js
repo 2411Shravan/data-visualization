@@ -1,5 +1,5 @@
 const shenzentickersMonthly = document.getElementById('shenzentickersMonthly');
-const loaderCycleSpinner = document.getElementById('loaderCycleSpinner');
+// const loaderCycleSpinner = document.getElementById('loaderCycleSpinner');
 var china_shenzen_monthly_dates = [];
 var china_shenzen_monthly_ohlc = [];
 var china_shenzen_final_monthly = [];
@@ -7,7 +7,7 @@ var china_shenzen_final_monthly = [];
 shenzentickersMonthly.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    loaderCycleSpinner.style.display = 'block';
+    // loaderCycleSpinner.style.display = 'block';
     const req_data = document.getElementById('shenzentickerM').value;
     console.log(req_data);
     shenzen_shanghaiready_monthly_data(req_data);
@@ -16,7 +16,7 @@ shenzentickersMonthly.addEventListener('submit', (e) => {
 function shenzen_shanghaiready_monthly_data(rd){
     var stre=rd.toUpperCase();
     console.log(stre);
-    var api='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+stre+'.SHH&apikey=WH75LQJ4BD7S15TO';
+    var api='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+stre+'.SHZ&apikey=WH75LQJ4BD7S15TO';
     shenzen_fetchshanghaiMonthlyData(api);
 }
 
@@ -70,7 +70,7 @@ function china_mergeshenzenMonthlyData(){
     }
 
     console.log(china_shenzen_final_monthly);
-    loaderCycleSpinner.style.display = 'none';
+    // loaderCycleSpinner.style.display = 'none';
     var options = {
         series: [{
             data: china_shenzen_final_monthly,
@@ -104,7 +104,7 @@ function china_mergeshenzenMonthlyData(){
         }
     };
 
-    const opt = document.getElementById('shanghaiMonthlyChart');
+    const opt = document.getElementById('shenzenMonthlyChart');
 
 
     var chart = new ApexCharts(opt, options);
