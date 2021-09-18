@@ -33,12 +33,12 @@
 
 <div class='container'>
     <div class="container mt-5 px-lg-5">
-        <form id='shanghaitickersMonthly' method='post'>
+        <form id='shenzentickersMonthly' method='post'>
             <div class="card">
                 <div class="card-body">
                     <div class="mb-2">
                         <label class="form-label">FirmCode/Ticker</label>
-                        <input type="text" name='shanghaitickerM' id='shanghaitickerM' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
+                        <input type="text" name='shenzentickerM' id='shenzentickerM' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
                     </div>
                     <button type="submit" class="btn btn-dark w-100">Get Data</button>
 
@@ -55,7 +55,7 @@
 
     <div class='cardee container mt-5 px-lg-5 mb-3' id='dshow'>
         <div class='container mt-5 px-lg-5'>
-            <div id="shanghaiMonthlyChart" class='pt-3 pb-2 pl-2'></div>
+            <div id="shenzenMonthlyChart" class='pt-3 pb-2 pl-2'></div>
         </div>
     </div>
 
@@ -70,49 +70,6 @@
             color: rgb(0, 0, 0.4);
         }
 
-        .loader {
-  width: 48px;
-  height: 48px;
-  background: #FF3D00;
-  display: none;
-  margin: 20px auto;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotationBack 1s ease-in-out infinite reverse;
-}
-.loader::before {
-  content: '';  
-  box-sizing: border-box;
-  left: 0;
-  top: 0;
-  transform: rotate(45deg);
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  background: #FF3D00;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-}
-.loader::after {
-  content: '';  
-  box-sizing: border-box;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  background: #FFF;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-}
-@keyframes rotationBack {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
 
     </style>
 
