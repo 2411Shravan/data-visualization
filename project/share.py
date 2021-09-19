@@ -64,6 +64,13 @@ def USshares():
     return render_template('/share-market/intros/usIntro.html',user=current_user)
 
 
+@share_market.route('/shares/endpoint/',methods=['GET','POST'])
+@login_required
+def ShareEndpoint():
+   
+    return render_template('/share-market/intros/usIntro.html',user=current_user)
+
+
 @share_market.route('/share/shenzen-stockexchange/',methods=['GET','POST'])
 @login_required
 def Shenzenshares():
