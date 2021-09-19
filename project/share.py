@@ -60,7 +60,15 @@ facts=[
 @share_market.route('/share/endpoints/',methods=['GET','POST'])
 @login_required
 def USshares():
-   
+    if request.method == 'POST':
+        codei= request.form['endpointdata']
+        upi=codei.upper()
+        print(upi)
+        
+        api='https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+upi+'&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        pprint(raw_data['bestMatches'])
     return render_template('/share-market/share/endpoint.html',user=current_user)
 
 
