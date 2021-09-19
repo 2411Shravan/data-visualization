@@ -36,7 +36,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-
+    </div>
 
 <div class='container'>
     <div class="container mt-5 px-lg-5">
@@ -45,21 +45,20 @@
                 <div class="card-body">
                     <div class="mb-2">
                         <label class="form-label">FirmCode/Ticker</label>
-                        <input type="text" name='endpointdata' id='endpointdata' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
+                        <input type="text" autocomplete='off' name='endpointdata' id='endpointdata' class="form-control" placeholder="Enter FirmCode (for ex:AAPL,IBM,MSFT etc)" required>
                     </div>
                     <button type="submit" class="btn btn-dark w-100">Get Data</button>
 
                 </div>
         </form>
         </div>
-
+    </div>
         {%if report%}
-        <table class="table table-striped table-dark mt-5">
+        <table class="table table-striped mt-5">
             <thead>
               <tr>
                 <th scope="col">Symbol</th>
                 <th scope="col">Name</th>
-                <th scope="col">Region</th>
                 <th scope="col">MatchScore</th>
               </tr>
             </thead>
@@ -67,9 +66,8 @@
                 {%for data in report%}
                 <tr>
                  
-                    <td>{{data['1. symbol']}}</td>
+                    <td><a href="{{data['1. symbol']}}">{{data['1. symbol']}}</a></td>
                     <td>{{data['2. name']}}</td>
-                    <td>{{data['4. region']}}</td>
                     <td>{{data['9. matchScore']}}</td>
                   </tr>
                 {%endfor%}
@@ -80,7 +78,7 @@
 
         {%endif%}
        
-    </div>
+
 
 
     <style>
