@@ -57,9 +57,27 @@ facts=[
     {'fact':'The longest English word is 189,819 letters long'}
 ]
 
-@share_market.route('/share/unitedstates-stockexchange/',methods=['GET','POST'])
+@share_market.route('/share/endpoints/',methods=['GET','POST'])
 @login_required
 def USshares():
+    if request.method == 'POST':
+        codei= request.form['endpointdata']
+        upi=codei.upper()
+        print(upi)
+        
+        api='https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+upi+'&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        # pprint(raw_data['bestMatches'])
+        report=raw_data['bestMatches']
+        pprint(report)
+        return render_template('/share-market/share/endpoint.html',user=current_user,report=report)
+    return render_template('/share-market/share/endpoint.html',user=current_user)
+
+
+@share_market.route('/shares/endpoint/',methods=['GET','POST'])
+@login_required
+def ShareEndpoint():
    
     return render_template('/share-market/intros/usIntro.html',user=current_user)
 
