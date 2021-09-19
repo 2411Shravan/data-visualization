@@ -57,11 +57,11 @@ facts=[
     {'fact':'The longest English word is 189,819 letters long'}
 ]
 
-@share_market.route('/share/unitedstates-stockexchange/',methods=['GET','POST'])
+@share_market.route('/share/endpoints/',methods=['GET','POST'])
 @login_required
 def USshares():
    
-    return render_template('/share-market/intros/usIntro.html',user=current_user)
+    return render_template('/share-market/share/endpoint.html',user=current_user)
 
 
 @share_market.route('/shares/endpoint/',methods=['GET','POST'])
