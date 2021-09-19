@@ -68,7 +68,10 @@ def USshares():
         api='https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+upi+'&apikey=WH75LQJ4BD7S15TO'
         raw=requests.get(api)
         raw_data=raw.json()
-        pprint(raw_data['bestMatches'])
+        # pprint(raw_data['bestMatches'])
+        report=raw_data['bestMatches']
+        pprint(report)
+        return render_template('/share-market/share/endpoint.html',user=current_user,report=report)
     return render_template('/share-market/share/endpoint.html',user=current_user)
 
 

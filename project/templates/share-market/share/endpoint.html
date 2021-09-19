@@ -53,7 +53,33 @@
         </form>
         </div>
 
+        {%if report%}
+        <table class="table table-striped mt-5">
+            <thead>
+              <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Name</th>
+                <th scope="col">Region</th>
+                <th scope="col">MatchScore</th>
+              </tr>
+            </thead>
+            <tbody>
+                {%for data in report%}
+                <tr>
+                 
+                    <td>{{data['1. symbol']}}</td>
+                    <td>{{data['2. name']}}</td>
+                    <td>{{data['4. region']}}</td>
+                    <td>{{data['9. matchScore']}}</td>
+                  </tr>
+                {%endfor%}
+              
 
+            </tbody>
+          </table>
+
+        {%endif%}
+       
     </div>
 
 
