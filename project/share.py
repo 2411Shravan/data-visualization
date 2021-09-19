@@ -61,7 +61,7 @@ facts=[
 @login_required
 def USshares():
    
-    return render_template('/share-market/intros/usIntro.html',user=current_user)
+    return render_template('/share-market/share/endpoint.html',user=current_user)
 
 
 @share_market.route('/shares/endpoint/',methods=['GET','POST'])
