@@ -8,9 +8,11 @@
 
 {%block content%}
 <div class="contanier" style="display:flex;align-items:center;justify-content:center;flex-direction:column;">
+    <div class="container mt-5 px-lg-5">
+        <div class="row gx-lg-5">
     {%if datas %}
         {%for data in datas %}
-            <div class="card mt-5">
+            <!-- <div class="card mt-5">
                 <div class="card-body">
                     <div class="headline text-center">
                         <h5>{{data['headline']}}</h5>
@@ -28,20 +30,77 @@
                         Source - {{data['source']}}
                     </div>
                 </div>
+            </div> -->
+
+            <div class="col-lg-6 col-xxl-4 mb-5">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="panel-logo">
+                        <div class="panel d-flex">
+                          <img src="{{data['image']}}" style='border-radius: 6px;'>
+                          <div style="display:flex;flex-direction: column;">
+                            <div>
+                                <h5 class='text-dark ml-4'>{{data['headline']}}</h5>
+                              </div>
+                              <div>
+                                <a href="{{data['url']}}" class=" ml-4">read more...</a> 
+                              </div>
+                          </div>
+                          
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         {%endfor%}
     {%endif%}
+    </div>
+    </div>
 </div>
    <style>
        img{
-           height:40%;
-           width:40%;
+           height:50%;
+           width:70%;
        }
        @media(max-width:750px){
         img{
-           height:80%;
-           width:80%;
+           height:50%;
+           width:50%;
        }
        }
+
+       
+.title{
+  font-size: 1.5em;
+  color: #fff;
+}
+.card{
+ 
+  background: rgba( 255, 255, 255, 0.12 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+
+border-radius: 25px;
+  border: 1px solid rgba( 0, 0, 0, 0.18 );
+  color: white;
+}
+
+.card-inner{
+  padding: 1em; 
+}
+
+label {
+  display: block;
+  font-size: .8em;
+}
+
+/* .panel-logo {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.panel {
+  margin: 0.5em 0;
+}
    </style>
 {%endblock%}
