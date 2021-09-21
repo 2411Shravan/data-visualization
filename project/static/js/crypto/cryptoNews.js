@@ -39,20 +39,32 @@ function displayNews() {
         //console.log(date)
 
         conta.innerHTML += `
-        <div class="card mt-3" style="border: 2px solid grey;">
-        <div class="card-body">
-            <div class="text-center"><h5>${ne.headline}</h5></div>
-            <hr>
-            <div class="container"><p>Source - ${ne.source}</p></div>
-            <div class="container text-center" style="display:flex;align-items:center;justify-content:center">
-            <div>
-            <img src="${ne.image}" height=300px width=300px/>
+
+        <div class="col-lg-6 col-xxl-4 mb-5">
+        <div class="card">
+            <div class="card-inner">
+                <div class="panel-logo">
+                <div class="panel d-flex">
+                  <img src="${ne.image}" style='border-radius: 6px;'>
+                  <div style="display:flex;flex-direction: column;">
+                    <div>
+                        <h5 class='text-dark ml-4'>${ne.headline}</h5>
+                      </div>
+
+                      <div>
+                        <h6 class="text-dark ml-4">Source -${ne.source}</h6> 
+                      </div>
+                      <div>
+                      <a href="${ne.url}" class=" ml-4">Read more...</a> 
+                    </div>
+                  </div>
+                  
+                </div>
+
+                </div>
             </div>
-            </div>
-            <div class="container mt-3"><h6>${ne.summary}</h6></div>
-            <div class="container text-center mt-2">Read More....<a href="${ne.url}"><p>${ne.url}</p></a></div>
         </div>
-        </div>
+    </div>
     
     `;
     })

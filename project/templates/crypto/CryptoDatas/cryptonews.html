@@ -41,8 +41,13 @@
         <div class="double-bounce1"></div>
         <div class="double-bounce2"></div>
       </div>
-      <div class="container" id="conta">
-
+      <div class="container" >
+        <div class="contanier" style="display:flex;align-items:center;justify-content:center;flex-direction:column;">
+          <div class="container mt-5 px-lg-5">
+              <div class="row gx-lg-5" id="conta">
+              </div>
+          </div>
+        </div>
       </div>
 </body>
    <style>
@@ -87,6 +92,51 @@
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
+}
+
+
+img{
+           height:50%;
+           width:55%;
+       }
+       @media(max-width:750px){
+        img{
+           height:50%;
+           width:50%;
+       }
+       }
+
+       
+.title{
+  font-size: 1.5em;
+  color: #fff;
+}
+.card{
+ 
+  background: rgba( 255, 255, 255, 0.12 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+
+border-radius: 25px;
+  border: 1px solid rgba( 0, 0, 0, 0.18 );
+  color: white;
+}
+
+.card-inner{
+  padding: 1em; 
+}
+
+label {
+  display: block;
+  font-size: .8em;
+}
+
+/* .panel-logo {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.panel {
+  margin: 0.5em 0;
 }
    </style>
 {%endblock%}
