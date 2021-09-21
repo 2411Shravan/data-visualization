@@ -38,18 +38,98 @@
         {%endif%}
     {% endwith %}
 
-    <div class="container">
-       <div class="container">
-           <div class="option1 d-flex">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1543286386-2e659306cd6c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="">
+    <div class="container mt-5 top-flow">
+       <div class="container gerd">
+           <div class="option1 d-flex pt-5">
+                <div class="imag">
+                    <img class="ml-3" style="border-radius: 6px;" src="https://images.unsplash.com/photo-1543286386-2e659306cd6c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" width="70%" height="70%" alt="">
                 </div>
                 <div>
                     <div class="header">
                         <h4>Latest NAV's(Net Asset)</h4>
+                        <p>Fecth all the available latest net asset values listed at Association of Mutual Funds of India (AMFI).</p>
+                        <button class="btn btn-primary" ><a href='/mutual-funds/latest-listed/' class="text-white">I'am ready to go</a></button><img class="ml-4" src="../../../static/images/leftpoint.png" width="130px" height="60px">
                     </div>
                 </div>
            </div>
+           <div class="option1 d-flex pt-5 pb-5">
+            <div class="header">
+                <h4>All Mutual Funds</h4>
+                <p>Fecth all the available mutual funds and it's families listed at Association of Mutual Funds of India (AMFI).</p>
+                <button class="btn btn-primary ">Start Now</button><img class="ml-4" src="../../../static/images/leftpoint.png" width="130px" height="60px">
+            </div>
+            <div>
+                <div class="imag">
+                    <img class="ml-3" style="border-radius: 6px;" src="https://images.unsplash.com/photo-1565514021506-1dc81b752c5e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="">
+                </div>
+            </div>
+       </div>
+
+       <div class="option1 d-flex" style="padding-top:120px">
+        <div class="imag">
+            <img class="ml-3" style="border-radius: 6px;" src="https://images.unsplash.com/photo-1604292771492-1aee47c1456b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"  alt="">
+        </div>
+        <div>
+            <div class="header">
+                <h4>All Mutual Scheme Names</h4>
+                <p>Fecth all the available mutual scheme names listed at Association of Mutual Funds of India (AMFI).</p>
+                <button class="btn btn-primary ">I'am ready to go</button><img class="ml-4" src="../../../static/images/leftpoint.png" width="130px" height="60px">
+            </div>
+        </div>
+   </div>
+
+   <div class="option1 d-flex pt-5 pb-5">
+    <div class="header">
+        <h4>Historical Mutual Funds</h4>
+        <p>Fecth all the historical mutual funds and it's families listed at Association of Mutual Funds of India (AMFI).</p>
+        <button class="btn btn-primary ">Start Now</button><img class="ml-4" src="../../../static/images/leftpoint.png" width="130px" height="60px">
+    </div>
+    <div>
+        <div class="imag">
+            <img class="ml-3" style="border-radius: 6px;" src="https://images.unsplash.com/photo-1595123550441-d377e017de6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="">
+        </div>
+    </div>
+</div>
+
+
+
        </div>
     </div>
+
+    <style>
+        .gerd{
+            background: rgba( 255, 255, 255, 0.12 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        border-radius: 10px;
+        border: 1px solid rgba( 0, 0, 0, 0.18 );
+
+        }
+        .header{
+            padding-top:25px;
+        }
+        .imag img{
+            width:90%;
+            height: 70%;
+        }
+        @media(max-width:767px){
+            .imag img{
+            width:90%;
+            height: 95%;
+        }
+        }
+        @media(max-width:991px){
+            .option1{
+                display:flex;
+                flex-direction:column;
+            }
+            .header{
+                margin-top:40px;
+                padding-left: 20px;
+                padding-bottom: 40px;
+            }
+        }
+        .top-flow{
+            margin-bottom: 50px;
+        }
+    </style>
 {%endblock%}
