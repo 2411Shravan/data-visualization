@@ -11,3 +11,10 @@ from pprint import pprint
 import random
 
 mutual_funds = Blueprint('mutual_funds', __name__)
+
+
+
+@mutual_funds.route('/mutual-funds/latest-listed/',methods=['GET','POST'])
+@login_required
+def Latestmutual():
+    return render_template('/mutualfunds/latest.html',user=current_user)
