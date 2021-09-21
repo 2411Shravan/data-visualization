@@ -38,18 +38,42 @@
         {%endif%}
     {% endwith %}
 
-    <div class="container">
-       <div class="container">
+    <div class="container mt-5">
+       <div class="container pt-5">
            <div class="option1 d-flex">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1543286386-2e659306cd6c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="">
+                <div class="imag">
+                    <img src="https://images.unsplash.com/photo-1543286386-2e659306cd6c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" width="70%" height="70%" alt="">
                 </div>
                 <div>
                     <div class="header">
                         <h4>Latest NAV's(Net Asset)</h4>
+                        <p>Fecth all the available latest net asset values listed at Association of Mutual Funds of India (AMFI).</p>
+                        <button class="btn btn-primary ">I'am ready to go</button><img class="ml-4" src="../../../static/images/leftpoint.png" width="130px" height="60px">
                     </div>
                 </div>
            </div>
        </div>
     </div>
+
+    <style>
+        .imag img{
+            width:90%;
+            height: 75%;
+        }
+        @media(max-width:767px){
+            .imag img{
+            width:90%;
+            height: 95%;
+        }
+        }
+        @media(max-width:991px){
+            .option1{
+                display:flex;
+                flex-direction:column;
+            }
+            .header{
+                margin-top:40px;
+            }
+        }
+    </style>
 {%endblock%}
