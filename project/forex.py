@@ -18,6 +18,7 @@ forex_data = Blueprint('forex_data', __name__)
 @login_required
 def Latestmutual():
     if request.method == 'POST':
+        send='name is string'
         data=[]
         from_curr=request.form['fromCurrName']
         to_curr=request.form['toCurrName']
@@ -35,5 +36,5 @@ def Latestmutual():
         currname1=rawdata['4. To_Currency Name']
         exrate=rawdata['5. Exchange Rate']
 
-        return render_template('/forex/exchange.html',user=current_user,bid=bid,ask=ask,exrate=exrate,currName=currName,currname1=currname1,data=data)
+        return render_template('/forex/exchange.html',user=current_user,bid=bid,ask=ask,exrate=exrate,currName=currName,currname1=currname1,data=data,send=send)
     return render_template('/forex/exchange.html',user=current_user)

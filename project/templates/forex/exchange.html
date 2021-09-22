@@ -52,7 +52,8 @@
             
         </form>
         <hr>
-        <div class="cardee">
+        {%if send %}
+        <div class="cardee mb-4">
             <div class="card-body">
                 <div class="container d-flex" style="flex-direction: column;">
                     <h5>From - {{currName}}</h5>
@@ -62,8 +63,15 @@
                     <h5>ExchangeRate - {{exrate}}</h5>
                 </div>
             </div>
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <div class="container pl-4 mb-5">
+                <div class="card">
+                    <div id="chart"></div>
+                </div>
+               
+            </div>
         </div>
+        {%endif%}
+       
     </div>
 
     <style>
@@ -78,34 +86,51 @@
         }
     </style>
     <script>
-        var ctx = document.getElementById('myChart');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Exchange Rate','Ask Price','Bid Price'],
-                datasets: [{
-                    label: 'Forex',
-                    data:{{data | safe}},
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
+         var options = {
+          series: [{
+          name: 'Exchange Rate',
+          data: {{data | safe}}
+        }],
+          chart: {
+          type: 'bar',
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '25%',
+            endingShape: 'rounded'
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['Exchange Rate','Ask Price','Bid Price'],
+        },
+        yaxis: {
+          title: {
+            text: 'Respecive Currency Units'
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return  val + " units"
             }
-        });
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
         </script>
 {%endblock%}
