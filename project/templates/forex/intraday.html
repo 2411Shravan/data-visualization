@@ -52,25 +52,15 @@
             
         </form>
         <hr>
-        {%if send %}
+      
         <div class="cardee mb-4">
-            <div class="card-body">
-                <div class="container d-flex" style="flex-direction: column;">
-                    <h5>From - {{currName}}</h5>
-                    <h5>To - {{currname1}}</h5>
-                    <h5>BidPrice - {{bid}}</h5>
-                    <h5>AskPrice - {{ask}}</h5>
-                    <h5>ExchangeRate - {{exrate}}</h5>
-                </div>
-            </div>
-            <div class="container pl-4 mb-5">
+            <div class="container pl-4 mb-5 mt-5">
                 <div class="card">
-                    <div id="chart"></div>
+                    <div id="IntradayChart"></div>
                 </div>
-               
             </div>
         </div>
-        {%endif%}
+  
        
     </div>
 
@@ -85,5 +75,44 @@
             color: rgb(0, 0, 0);
         }
     </style>
-    
+    <script>
+             var options = {
+        series: [{
+            data: {{ dataCandle | safe}},
+        }],
+        chart: {
+            type: 'candlestick',
+            height: 400,
+            foreColor: '#000000'
+        },
+        title: {
+            text: 'MetaData',
+            align: 'left'
+        },
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: {
+            tooltip: {
+                enabled: true
+            }
+        },
+        theme: {
+            mode: 'light',
+            palette: 'palette1',
+            monochrome: {
+                enabled: false,
+                color: '#ffffff',
+                shadeTo: 'light',
+                shadeIntensity: 0.65
+            },
+        }
+    };
+
+    const div = document.getElementById('IntradayChart');
+
+
+    var chart = new ApexCharts(div, options);
+    chart.render();
+    </script>
 {%endblock%}

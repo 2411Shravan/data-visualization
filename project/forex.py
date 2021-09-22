@@ -6,6 +6,7 @@ from flask_login import login_required
 from flask_login import current_user
 from pprint import pprint
 from flask import request
+from flask import url_for
 import requests
 from pprint import pprint
 import random
@@ -40,10 +41,42 @@ def Latestmutual():
     return render_template('/forex/exchange.html',user=current_user)
 
 
+germanDayKeys=[]
+germanFinal=[]
 
 @forex_data.route('/forex/intraday-rates/',methods=['GET','POST'])
 @login_required
 def IntradayExchange():
     if request.method == 'POST':
-        return redirect('/forex/exchanges/')
-    return render_template('/forex/exchange.html',user=current_user)
+        send='name is string'
+        data=[]
+        from_curr=request.form['fromCurrName']
+        to_curr=request.form['toCurrName']
+        api='https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol='+from_curr.upper()+'&to_symbol='+to_curr.upper()+'&interval=5min&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        pprint(raw_data)
+        first_filter=raw_data['Time Series FX (5min)']
+        first_keys=first_filter.keys()
+        print(len(first_keys))
+        for data in first_keys:
+            germanDayKeys.append(data)
+
+        first_values=first_filter.values()
+        print(len(first_values))
+        for singledata in first_values:
+            values=[];
+            values.append(float(singledata['1. open']))
+            values.append(float(singledata['2. high']))
+            values.append(float(singledata['3. low']))
+            values.append(float(singledata['4. close']))
+            req={}
+            req['y']=values
+            germanFinal.append(req)
+
+        i=0
+        for data in germanFinal:   
+            data['x']=germanDayKeys[i]
+            i=i+1
+        return render_template('/forex/intraday.html',user=current_user,dataCandle=germanFinal)
+    return render_template('/forex/intraday.html',user=current_user)
