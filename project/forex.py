@@ -80,3 +80,127 @@ def IntradayExchange():
             i=i+1
         return render_template('/forex/intraday.html',user=current_user,dataCandle=germanFinal)
     return render_template('/forex/intraday.html',user=current_user)
+
+daily=[]
+dailyfinal=[]
+@forex_data.route('/forex/daily-rates/',methods=['GET','POST'])
+@login_required
+def DailyExchange():
+    if request.method == 'POST':
+        send='name is string'
+        data=[]
+        from_curr=request.form['fromCurrName']
+        to_curr=request.form['toCurrName']
+        api='https://www.alphavantage.co/query?function=FX_DAILY&from_symbol='+from_curr.upper()+'&to_symbol='+to_curr.upper()+'&interval=5min&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        pprint(raw_data)
+        first_filter=raw_data['Time Series FX (Daily)']
+        first_keys=first_filter.keys()
+        print(len(first_keys))
+        for data in first_keys:
+            daily.append(data)
+
+        first_values=first_filter.values()
+        print(len(first_values))
+        for singledata in first_values:
+            values=[];
+            values.append(float(singledata['1. open']))
+            values.append(float(singledata['2. high']))
+            values.append(float(singledata['3. low']))
+            values.append(float(singledata['4. close']))
+            req={}
+            req['y']=values
+            dailyfinal.append(req)
+
+        i=0
+        for data in dailyfinal:   
+            data['x']=daily[i]
+            i=i+1
+        pprint(dailyfinal)
+        return render_template('/forex/daily.html',user=current_user,datacdl=dailyfinal)
+    return render_template('/forex/daily.html',user=current_user)
+
+
+weekly=[]
+weeklyfinal=[]
+@forex_data.route('/forex/weekly-rates/',methods=['GET','POST'])
+@login_required
+def WeeklyExchange():
+    if request.method == 'POST':
+        send='name is string'
+        data=[]
+        from_curr=request.form['fromCurrName']
+        to_curr=request.form['toCurrName']
+        api='https://www.alphavantage.co/query?function=FX_WEEKLY&from_symbol='+from_curr.upper()+'&to_symbol='+to_curr.upper()+'&interval=5min&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        pprint(raw_data)
+        first_filter=raw_data['Time Series FX (Weekly)']
+        first_keys=first_filter.keys()
+        print(len(first_keys))
+        for data in first_keys:
+            weekly.append(data)
+
+        first_values=first_filter.values()
+        print(len(first_values))
+        for singledata in first_values:
+            values=[];
+            values.append(float(singledata['1. open']))
+            values.append(float(singledata['2. high']))
+            values.append(float(singledata['3. low']))
+            values.append(float(singledata['4. close']))
+            req={}
+            req['y']=values
+            weeklyfinal.append(req)
+
+        i=0
+        for data in weeklyfinal:   
+            data['x']=weekly[i]
+            i=i+1
+        pprint(weeklyfinal)
+        return render_template('/forex/weekly.html',user=current_user,datacdl=weeklyfinal)
+    return render_template('/forex/weekly.html',user=current_user)
+
+
+
+
+monthly=[]
+monthlyfinal=[]
+@forex_data.route('/forex/monthly-rates/',methods=['GET','POST'])
+@login_required
+def MonthlyExchange():
+    if request.method == 'POST':
+        send='name is string'
+        data=[]
+        from_curr=request.form['fromCurrName']
+        to_curr=request.form['toCurrName']
+        api='https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol='+from_curr.upper()+'&to_symbol='+to_curr.upper()+'&interval=5min&apikey=WH75LQJ4BD7S15TO'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        pprint(raw_data)
+        first_filter=raw_data['Time Series FX (Monthly)']
+        first_keys=first_filter.keys()
+        print(len(first_keys))
+        for data in first_keys:
+            monthly.append(data)
+
+        first_values=first_filter.values()
+        print(len(first_values))
+        for singledata in first_values:
+            values=[];
+            values.append(float(singledata['1. open']))
+            values.append(float(singledata['2. high']))
+            values.append(float(singledata['3. low']))
+            values.append(float(singledata['4. close']))
+            req={}
+            req['y']=values
+            monthlyfinal.append(req)
+
+        i=0
+        for data in monthlyfinal:   
+            data['x']=monthly[i]
+            i=i+1
+        pprint(monthlyfinal)
+        return render_template('/forex/monthly.html',user=current_user,datacdl=monthlyfinal)
+    return render_template('/forex/monthly.html',user=current_user)
