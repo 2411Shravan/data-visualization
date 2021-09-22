@@ -38,3 +38,12 @@ def Latestmutual():
 
         return render_template('/forex/exchange.html',user=current_user,bid=bid,ask=ask,exrate=exrate,currName=currName,currname1=currname1,data=data,send=send)
     return render_template('/forex/exchange.html',user=current_user)
+
+
+
+@forex_data.route('/forex/intraday-rates/',methods=['GET','POST'])
+@login_required
+def IntradayExchange():
+    if request.method == 'POST':
+        return redirect('/forex/exchanges/')
+    return render_template('/forex/exchange.html',user=current_user)
