@@ -37,10 +37,10 @@ def Crypto():
 
 
 
-@view.route('/mutualfunds')
+@view.route('/forex')
 @login_required
 def mutualfunds():
-    return render_template('mutual.html',user=current_user)
+    return render_template('forex.html',user=current_user)
 
 @view.route('/fundamentals')
 @login_required

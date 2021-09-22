@@ -1,0 +1,111 @@
+{%extends 'base.html'%}
+
+
+
+{%block title%}
+    Home
+{%endblock%}
+
+
+
+
+{%block content%}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+        {%if messages %}
+            {%for category,message in messages%}
+                {%if category == "warning" %}
+                <div class="alert text-center alert-warning  alert-dismissable fade show" role="alert">
+                    
+                        {{ message }}
+                   
+                    
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden ="true">&times;</span>
+                    </button>
+                </div>
+                {%else%}
+                <div class="alert text-center alert-success  flex-end alert-dismissable fade show" role="alert">
+                    
+                        {{ message }}
+                   
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden ="true">&times;</span>
+                    </button>
+                </div>
+                {%endif%}
+            {%endfor%}
+        {%endif%}
+    {% endwith %}
+
+    <div class="container" style="margin-top: 100px;">
+        <h3>Global Stats</h3>
+        <form method="POST">
+            <div class="card pl-3 pr-3 pb-3 pt-3">
+                <label class="form-label">From Currency</label>
+                <input autocomplete="off" type="text" class="form-control" id="fromCurrName" name="fromCurrName" placeholder="Enter Currency Symbol (ex: USD,INR)" required>
+                <label class="form-label">To Currency</label>
+                <input autocomplete="off" type="text" class="form-control" id="toCurrName" name="toCurrName" placeholder="Enter Currency Symbol (ex: CNY,EUR)" required>
+                
+                <button type="submit" class="btn btn-dark w-100 mt-3">Get Data</button>
+            </div>
+            
+        </form>
+        <hr>
+        <div class="cardee">
+            <div class="card-body">
+                <div class="container d-flex" style="flex-direction: column;">
+                    <h5>From - {{currName}}</h5>
+                    <h5>To - {{currname1}}</h5>
+                    <h5>BidPrice - {{bid}}</h5>
+                    <h5>AskPrice - {{ask}}</h5>
+                    <h5>ExchangeRate - {{exrate}}</h5>
+                </div>
+            </div>
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+    </div>
+
+    <style>
+        .cardee{
+            border: 2px solid rgba(128, 128, 128, 0.637);
+            background: rgba( 255, 255, 255, 0.12 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+
+            border-radius: 25px;
+            border: 1px solid rgba( 0, 0, 0, 0.18 );
+            color: rgb(0, 0, 0);
+        }
+    </style>
+    <script>
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Exchange Rate','Ask Price','Bid Price'],
+                datasets: [{
+                    label: 'Forex',
+                    data:{{data | safe}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        </script>
+{%endblock%}
