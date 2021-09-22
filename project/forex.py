@@ -182,25 +182,37 @@ def MonthlyExchange():
         first_filter=raw_data['Time Series FX (Monthly)']
         first_keys=first_filter.keys()
         print(len(first_keys))
-        for data in first_keys:
-            monthly.append(data)
+        
+        return render_template('/forex/basecheck.html',user=current_user,datacdl=monthlyfinal)
+    return render_template('/forex/basecheck.html',user=current_user)
 
-        first_values=first_filter.values()
-        print(len(first_values))
-        for singledata in first_values:
-            values=[];
-            values.append(float(singledata['1. open']))
-            values.append(float(singledata['2. high']))
-            values.append(float(singledata['3. low']))
-            values.append(float(singledata['4. close']))
-            req={}
-            req['y']=values
-            monthlyfinal.append(req)
 
+
+monthly=[]
+monthlyfinal=[]
+@forex_data.route('/forex/base-compare/',methods=['GET','POST'])
+@login_required
+def Compare():
+    if request.method == 'POST':
+        data=[]
+        from_curr=request.form['fromCurrName']
+        api='https://finnhub.io/api/v1/forex/rates?base='+from_curr.upper()+'&token=c2vgio2ad3i9mrpv9i2g'
+        raw=requests.get(api)
+        raw_data=raw.json()
+        first_filter=raw_data['quote']
+        first_keys=first_filter.keys()
+        pprint(first_keys)
+        for dt in first_keys:
+            res={}
+            res['x']=dt
+            data.append(res)
+        
         i=0
-        for data in monthlyfinal:   
-            data['x']=monthly[i]
+        first_values=first_filter.values()
+        for rt in first_values:
+            data[i]['y']=rt
             i=i+1
-        pprint(monthlyfinal)
-        return render_template('/forex/monthly.html',user=current_user,datacdl=monthlyfinal)
-    return render_template('/forex/monthly.html',user=current_user)
+
+        pprint(data)
+        return render_template('/forex/basecheck.html',user=current_user,ke=first_keys,valu=first_values,data=data)
+    return render_template('/forex/basecheck.html',user=current_user)
