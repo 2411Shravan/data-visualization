@@ -2,6 +2,7 @@ from flask import Flask
 from flask import Blueprint
 from flask import redirect
 from flask import render_template
+from flask import url_for
 from flask_login import login_required
 from flask_login import current_user
 from pprint import pprint
@@ -622,3 +623,48 @@ def ShenzenDailyShares():
     fact=facts[num]['fact']
 
     return render_template('/share-market/share/shenzen/daily.html',user=current_user,fact=fact)
+
+
+
+@share_market.route('/shares/endpoint-check/<name>',methods=['GET','POST'])
+@login_required
+def EndpointData(name):
+    endpointdaykeys=[]
+    endpointdayfinal=[]
+    firstapi='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+name+'&outputsize=full&apikey=WH75LQJ4BD7S15TO'
+    raw1=requests.get(firstapi)
+    raw_data1=raw1.json()
+    pprint(raw_data1)
+    first_filter=raw_data1['Time Series (Daily)']
+    first_keys=first_filter.keys()
+    print(len(first_keys))
+    for data in first_keys:
+        endpointdaykeys.append(data)
+
+    first_values=first_filter.values()
+    print(len(first_values))
+
+    for singledata in first_values:
+        values=[];
+        values.append(float(singledata['1. open']))
+        values.append(float(singledata['2. high']))
+        values.append(float(singledata['3. low']))
+        values.append(float(singledata['4. close']))
+        req={}
+        req['y']=values
+        endpointdayfinal.append(req)
+
+    i=0
+    for data in endpointdayfinal:   
+        data['x']=endpointdaykeys[i]
+        i=i+1
+    
+    api='https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol='+name+'&apikey=WH75LQJ4BD7S15TO'
+    raw=requests.get(api)
+    raw_data=raw.json()
+    pprint(raw_data)
+    thirdapi='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol='+name+'&apikey=WH75LQJ4BD7S15TO'
+    raw2=requests.get(thirdapi)
+    raw_data2=raw2.json()
+    pprint(raw_data2)
+    return render_template('/share-market/share/endpointdata.html',datae=endpointdayfinal,user=current_user)
