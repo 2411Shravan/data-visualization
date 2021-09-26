@@ -31,7 +31,7 @@
 {% endwith %}
 
     </div>
-s
+
 
 
     <div class='cardee container mt-5 px-lg-5 mb-3' id='dshow'>
@@ -85,6 +85,46 @@ s
 
     var chart = new ApexCharts(div, options);
     chart.render();
+
+
+    var options1 = {
+        series: [{
+            data: {{ dat | safe}},
+        }],
+        chart: {
+            type: 'candlestick',
+            height: 400,
+            foreColor: '#000000'
+        },
+        title: {
+            text: 'Weekly Metadata',
+            align: 'left'
+        },
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: {
+            tooltip: {
+                enabled: true
+            }
+        },
+        theme: {
+            mode: 'light',
+            palette: 'palette1',
+            monochrome: {
+                enabled: false,
+                color: '#ffffff',
+                shadeTo: 'light',
+                shadeIntensity: 0.65
+            },
+        }
+    };
+
+    const div1 = document.getElementById('EndpointWeeklyChart');
+
+
+    var chart1 = new ApexCharts(div1, options1);
+    chart1.render();
     </script>
     <style>
         .cardee {
@@ -101,3 +141,4 @@ s
 
 
     {%endblock%}
+

@@ -631,6 +631,9 @@ def ShenzenDailyShares():
 def EndpointData(name):
     endpointdaykeys=[]
     endpointdayfinal=[]
+    endpointweeklykeys=[]
+    endpointmonthlyfinal=[]
+
     firstapi='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+name+'&outputsize=full&apikey=WH75LQJ4BD7S15TO'
     raw1=requests.get(firstapi)
     raw_data1=raw1.json()
@@ -660,11 +663,34 @@ def EndpointData(name):
         i=i+1
     
     api='https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol='+name+'&apikey=WH75LQJ4BD7S15TO'
-    raw=requests.get(api)
-    raw_data=raw.json()
-    pprint(raw_data)
+    raw1=requests.get(api)
+    raw_data1=raw1.json()
+    pprint(raw_data1)
+    first_filters=raw_data1['Weekly Time Series']
+    first_keyss=first_filters.keys()
+    print(len(first_keyss))
+    for data in first_keyss:
+        endpointweeklykeys.append(data)
+
+    first_valuess=first_filters.values()
+    print(len(first_valuess))
+
+    for singledata in first_valuess:
+        values=[];
+        values.append(float(singledata['1. open']))
+        values.append(float(singledata['2. high']))
+        values.append(float(singledata['3. low']))
+        values.append(float(singledata['4. close']))
+        req={}
+        req['y']=values
+        endpointmonthlyfinal.append(req)
+
+    i=0
+    for data in endpointmonthlyfinal:   
+        data['x']=endpointweeklykeys[i]
+        i=i+1
     thirdapi='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol='+name+'&apikey=WH75LQJ4BD7S15TO'
     raw2=requests.get(thirdapi)
     raw_data2=raw2.json()
     pprint(raw_data2)
-    return render_template('/share-market/share/endpointdata.html',datae=endpointdayfinal,user=current_user)
+    return render_template('/share-market/share/endpointdata.html',datae=endpointdayfinal,user=current_user,dat=endpointmonthlyfinal)
