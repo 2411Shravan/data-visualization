@@ -125,6 +125,49 @@
 
     var chart1 = new ApexCharts(div1, options1);
     chart1.render();
+
+
+    var options2 = {
+        series: [{
+            data: {{ datt | safe}},
+        }],
+        chart: {
+            type: 'candlestick',
+            height: 400,
+            foreColor: '#000000'
+        },
+        title: {
+            text: 'Monthly Metadata',
+            align: 'left'
+        },
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: {
+            tooltip: {
+                enabled: true
+            }
+        },
+        theme: {
+            mode: 'light',
+            palette: 'palette1',
+            monochrome: {
+                enabled: false,
+                color: '#ffffff',
+                shadeTo: 'light',
+                shadeIntensity: 0.65
+            },
+        }
+    };
+
+    const div2 = document.getElementById('EndpointMonthlyChart');
+
+
+    var chart2 = new ApexCharts(div2, options2);
+    chart2.render();
+
+
+
     </script>
     <style>
         .cardee {

@@ -632,6 +632,8 @@ def EndpointData(name):
     endpointdaykeys=[]
     endpointdayfinal=[]
     endpointweeklykeys=[]
+    endpointweeklyfinal=[]
+    endpointmonthlykeys=[]
     endpointmonthlyfinal=[]
 
     firstapi='https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+name+'&outputsize=full&apikey=WH75LQJ4BD7S15TO'
@@ -683,14 +685,39 @@ def EndpointData(name):
         values.append(float(singledata['4. close']))
         req={}
         req['y']=values
-        endpointmonthlyfinal.append(req)
+        endpointweeklyfinal.append(req)
 
     i=0
-    for data in endpointmonthlyfinal:   
+    for data in endpointweeklyfinal:   
         data['x']=endpointweeklykeys[i]
         i=i+1
+
+
     thirdapi='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol='+name+'&apikey=WH75LQJ4BD7S15TO'
     raw2=requests.get(thirdapi)
     raw_data2=raw2.json()
     pprint(raw_data2)
-    return render_template('/share-market/share/endpointdata.html',datae=endpointdayfinal,user=current_user,dat=endpointmonthlyfinal)
+    first_filters2=raw_data2['Monthly Time Series']
+    first_keyss2=first_filters2.keys()
+    print(len(first_keyss2))
+    for data in first_keyss2:
+        endpointmonthlykeys.append(data)
+
+    first_valuess2=first_filters2.values()
+    print(len(first_valuess2))
+
+    for singledata in first_valuess2:
+        values=[];
+        values.append(float(singledata['1. open']))
+        values.append(float(singledata['2. high']))
+        values.append(float(singledata['3. low']))
+        values.append(float(singledata['4. close']))
+        req={}
+        req['y']=values
+        endpointmonthlyfinal.append(req)
+
+    i=0
+    for data in endpointmonthlyfinal:   
+        data['x']=endpointmonthlykeys[i]
+        i=i+1
+    return render_template('/share-market/share/endpointdata.html',datae=endpointdayfinal,user=current_user,dat=endpointweeklyfinal,datt=endpointmonthlyfinal)
