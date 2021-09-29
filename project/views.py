@@ -20,7 +20,7 @@ def home():
 
 @view.route('/about')
 def about():
-    return 'about us'
+    return render_template('about.html',user=current_user)
 
 @view.route('/contact',methods=['GET','POST'])
 @login_required
