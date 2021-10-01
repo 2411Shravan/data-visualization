@@ -5,7 +5,10 @@ from flask import Blueprint
 from flask_login import login_required
 from flask_login import current_user
 from . import db
-from .models import User
+from flask import request
+from flask import flash
+from .models import User,Note
+from flask import url_for
 
 view=Blueprint('view',__name__)
 
@@ -24,6 +27,7 @@ def contact():
     return render_template('contact.html',user=current_user)
 
 
+
 @view.route('/share-market')
 @login_required
 def ShareMarket():
@@ -35,10 +39,7 @@ def ShareMarket():
 def Crypto():
     return render_template('crypto/crypto.html',user=current_user)
 
-@view.route('/<string:name>/notes')
-@login_required
-def UserNotes(name):
-    return render_template('usernote.html',user=current_user)
+
 
 @view.route('/forex')
 @login_required

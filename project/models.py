@@ -34,11 +34,6 @@ class User(db.Model,UserMixin):
     market_values= db.relationship('MarketValue')
 
 
-class Crypto(db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    crypto_name= db.Column(db.String(20000))
-    crypto_value= db.Column(db.Integer())
-    date = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
+
 
 
