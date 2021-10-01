@@ -16,7 +16,10 @@ class Note(db.Model):
 class MarketValue(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     market_name= db.Column(db.String(20000))
-    market_value= db.Column(db.String(20000))
+    market_open_value= db.Column(db.Integer())
+    market_close_value= db.Column(db.Integer())
+    market_high_value= db.Column(db.Integer())
+    market_low_value= db.Column(db.Integer())
     date = db.Column(db.DateTime, default=datetime.utcnow)
     user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -29,3 +32,13 @@ class User(db.Model,UserMixin):
     username=db.Column(db.String(150),unique=True)
     notes= db.relationship('Note')
     market_values= db.relationship('MarketValue')
+
+
+class Crypto(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    crypto_name= db.Column(db.String(20000))
+    crypto_value= db.Column(db.Integer())
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
+
+
