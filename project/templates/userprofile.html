@@ -40,50 +40,10 @@
 
     <div class="container mb-5">
         <div class="d-flex" style="justify-content: end; margin-top:40px">
-            <button class="btn btn-danger"><a href='/logout'>Logout</a></button>
+            <button class="btn btn-danger"><a href='/logout' class="text-white">Logout</a></button>
         </div>
 
-        <div class="row mt-5">
-          <div class="col">
-            <div class="card">
-                <div class="card-body"> <a href='/{{user.username}}/notes' style="text-decoration:none; color:black">
-                    <h4 class="text-center">Notes</h4>
-                    <hr>
-                    <h6 class="text-center">Make your notes/todos here.</h6>
-                </a>
-                </div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-5">
-          <div class="col">
-            <div class="card">
-                <div class="card-body">
-                   <h4>Currencies</h4> 
-                    <hr>
-                    <h6>Store your required global currency lists and datas.</h6>
-                </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h4>Shares</h4>
-                    <hr>
-                    <h6>Save your required Shares information and data-figures.</h6>
-                </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-                <div class="card-body">
-                   <h4>Crypto</h4> 
-                    <hr>
-                    <h6>Save your needed/required Crypto figures.</h6>
-                </div>
-            </div>
-          </div>
-        </div>
+
 
         <div class="row mt-5">
             <div class="col">
@@ -92,16 +52,16 @@
                         <a href="/user-profile/{{user.id}}/reset-profile"><h4 class="text-dark"> Reset credentials. </h4></a>
                         <hr>
                         <h6>
-                            Reset your username,email,password and etc..
+                            Reset your username,email,password
                         </h6>
                     </div>
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col" id="reg">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Delete My Account.</h4>
+                        <h4>Delete Account.</h4>
                         <hr>
                         <h6>
                             Delete account including all saved info.
@@ -115,6 +75,11 @@
     <style>
         .card{
             border: 1.5px solid grey;
+        }
+        @media(max-width:500px){
+            #reg{
+                margin-top:40px;
+            }
         }
         
     </style>
