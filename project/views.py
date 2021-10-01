@@ -4,8 +4,8 @@ from flask import render_template
 from flask import Blueprint
 from flask_login import login_required
 from flask_login import current_user
-
-
+from . import db
+from .models import User
 
 view=Blueprint('view',__name__)
 
@@ -37,8 +37,8 @@ def Crypto():
 
 @view.route('/<string:name>/notes')
 @login_required
-def UserNotes():
-    return render_template('crypto/crypto.html',user=current_user)
+def UserNotes(name):
+    return render_template('usernote.html',user=current_user)
 
 @view.route('/forex')
 @login_required
