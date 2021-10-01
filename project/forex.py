@@ -171,6 +171,8 @@ monthlyfinal=[]
 @login_required
 def MonthlyExchange():
     if request.method == 'POST':
+        monthly=[]
+        monthlyfinal=[]
         send='name is string'
         data=[]
         from_curr=request.form['fromCurrName']
@@ -182,14 +184,32 @@ def MonthlyExchange():
         first_filter=raw_data['Time Series FX (Monthly)']
         first_keys=first_filter.keys()
         print(len(first_keys))
+        for data in first_keys:
+            monthly.append(data)
+
+        first_values=first_filter.values()
+        print(len(first_values))
+        for singledata in first_values:
+            values=[];
+            values.append(float(singledata['1. open']))
+            values.append(float(singledata['2. high']))
+            values.append(float(singledata['3. low']))
+            values.append(float(singledata['4. close']))
+            req={}
+            req['y']=values
+            monthlyfinal.append(req)
+
+        i=0
+        for data in monthlyfinal:   
+            data['x']=monthly[i]
+            i=i+1
         
-        return render_template('/forex/basecheck.html',user=current_user,datacdl=monthlyfinal)
-    return render_template('/forex/basecheck.html',user=current_user)
+        return render_template('/forex/monthly.html',user=current_user,datacdl=monthlyfinal)
+    return render_template('/forex/monthly.html',user=current_user)
 
 
 
-monthly=[]
-monthlyfinal=[]
+
 @forex_data.route('/forex/base-compare/',methods=['GET','POST'])
 @login_required
 def Compare():

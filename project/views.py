@@ -35,7 +35,10 @@ def ShareMarket():
 def Crypto():
     return render_template('crypto/crypto.html',user=current_user)
 
-
+@view.route('/<string:name>/notes')
+@login_required
+def UserNotes():
+    return render_template('crypto/crypto.html',user=current_user)
 
 @view.route('/forex')
 @login_required
