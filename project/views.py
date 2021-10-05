@@ -6,10 +6,11 @@ from flask_login import login_required
 from flask_login import current_user
 from . import db
 from flask import request
+import requests
 from flask import flash
 from .models import User,Note
 from flask import url_for
-
+from pprint import pprint
 view=Blueprint('view',__name__)
 
 
@@ -60,7 +61,17 @@ def currencies():
 @view.route('/realtime-gdp')
 @login_required
 def RealGDP():
-    return render_template('realgdp.html',user=current_user)
+    api='https://www.alphavantage.co/query?function=REAL_GDP&interval=annual&apikey=WH75LQJ4BD7S15TO'
+    raw=requests.get(api)
+    raw_data=raw.json()
+    pprint(raw_data)
+    date=[]
+    value=[]
+    dat_val=raw_data['data']
+    for i in dat_val:
+        date.append(int(i['date'][0:4]))
+        value.append(float(i['value']))
+    return render_template('realgdp.html',user=current_user,date=date,value=value)
 
 
 
