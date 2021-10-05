@@ -57,6 +57,14 @@ def fundamentals():
 def currencies():
     return render_template('currency.html',user=current_user)
 
+@view.route('/realtime-gdp')
+@login_required
+def RealGDP():
+    return render_template('realgdp.html',user=current_user)
+
+
+
+
 @view.route('/user-profile/<string:name>')
 @login_required
 def userprofile(name):
