@@ -74,6 +74,22 @@ def RealGDP():
     return render_template('realgdp.html',user=current_user,date=date,value=value)
 
 
+@view.route('/gdp-percapita')
+@login_required
+def GDPPercapita():
+    api='https://www.alphavantage.co/query?function=REAL_GDP_PER_CAPITA&apikey=WH75LQJ4BD7S15TO'
+    raw=requests.get(api)
+    raw_data=raw.json()
+    pprint(raw_data)
+    date=[]
+    value=[]
+    dat_val=raw_data['data']
+    for i in dat_val:
+        date.append(int(i['date'][0:4]))
+        value.append(float(i['value']))
+    return render_template('gdppercapita.html',user=current_user,date=date,value=value)
+
+
 
 
 @view.route('/user-profile/<string:name>')

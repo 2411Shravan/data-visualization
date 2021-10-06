@@ -1,0 +1,109 @@
+{%extends 'base.html'%}
+
+
+
+{%block title%}
+    Update-Credentials
+{%endblock%}
+
+
+
+
+{%block content%}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+        {%if messages %}
+            {%for category,message in messages%}
+                {%if category == "warning" %}
+                <div class="alert text-center alert-warning  alert-dismissable fade show" role="alert">
+                    
+                        {{ message }}
+                   
+                    
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden ="true">&times;</span>
+                    </button>
+                </div>
+                {%else%}
+                <div class="alert text-center alert-success  flex-end alert-dismissable fade show" role="alert">
+                    
+                        {{ message }}
+                   
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden ="true">&times;</span>
+                    </button>
+                </div>
+                {%endif%}
+            {%endfor%}
+        {%endif%}
+    {% endwith %}
+
+    
+    
+                <div class="container mt-5">
+                    <div class="card">
+                        <div id="chart">
+                        </div>
+                    </div>
+                </div>
+
+
+                <script>
+        var options = {
+          series: [{
+          name: "World GDP",
+          data: {{value | safe}}
+        }],
+          chart: {
+          type: 'area',
+          height: 350,
+          zoom: {
+            enabled: true
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        
+        title: {
+          text: 'Fundamental Analysis of GDP PerCapita',
+          align: 'left'
+        },
+        subtitle: {
+          text: 'Units - Billions ($)',
+          align: 'left'
+        },
+        labels: {{date | safe}},
+        xaxis: {
+          type: 'datetime',
+        },
+        yaxis: {
+          opposite: true
+        },
+        legend: {
+          horizontalAlign: 'left'
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+      
+      
+    
+                </script>
+
+                <style>
+                            .card{
+            background: rgba( 255, 255, 255, 0.12 );
+box-shadow: 0 8px 8px 0 rgba( 31, 38, 135, 0.37 );
+
+border-radius: 4px;
+ border: 1px solid rgba( 0, 0, 0, 0.18 );
+ color: rgb(0, 0, 0);
+        }
+                </style>
+    
+{%endblock%}
