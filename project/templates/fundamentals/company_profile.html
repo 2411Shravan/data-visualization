@@ -11,7 +11,10 @@
         <form method="POST">
             <label class="form-label" for="formInputExample">Enter Company Code</label>
             <input type="text"name='company' class="form-control" id="formInputExample" placeholder="Comp-Code ex:MSFT">
+            <button type="submit" class="btn btn-dark w-100 mt-2">Get Data</button>
         </form>
+
+        <p class='text-danger'>Only firms of USD Markets</p>
     </div>
     {%if data%}
     <div class="container bg-dark text-white" style="border-radius: 4px; margin-top:100px;margin-bottom:50px">
