@@ -75,106 +75,80 @@ function sortIncome(annuals){
 
     console.log(fde,cor,comprehensiveIncomeNetOfTax,costofGoodsAndServicesSold);
 
-    var ctx = document.getElementById('chart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: fde,
-            datasets: [{
-                label: 'Cost of revenue',
-                data: cor,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#b85e04', 
-            },{
-                label: 'comprehensive Tax',
-                data: comprehensiveIncomeNetOfTax,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#017a8f',
-            },
-            {
-                label: 'cost of Goods And Services Sold',
-                data: costofGoodsAndServicesSold,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#3b0259',
-            },
-            {
-                label: 'depreciation',
-                data: depreciation,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#CA18EF',
-            },
-            {
-                label: 'grossProfit',
-                data: grossProfit,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#F111BF',
-            },
-            {
-                label: 'interestIncome',
-                data: interestIncome,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#7B95CD', 
-            },
-            {
-                label: 'netIncome',
-                data: netIncome,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#0B6D05',
-            },
-            {
-                label: 'operatingIncome',
-                data: operatingIncome,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#778500', 
-            },
-            {
-                label: 'research And Development',
-                data: researchAndDevelopment,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#E9BD07',
-            },
-            {
-                label: 'selling General And Administrative',
-                data: sellingGeneralAndAdministrative,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#E97107', 
-            },
-            {
-                label: 'income-Tax Expense',
-                data: incomeTaxExpense,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#E93C07', 
-            },
-            {
-                label: 'totalRevenue',
-                data: totalRevenue,
-                lineTension:0.5,
-                fill:true,
-                borderColor: '#E9073C', 
-            }]
-        },
-        options:{
-            maintainAspectRatio: true,
-            responsive:true,
-    scales:{
+
+
+
+    var options = {
+        series: [{
+        name: 'Cost of revenue',
+        data:cor
+      }, {
+        name: 'comprehensive Tax',
+        data: comprehensiveIncomeNetOfTax
+      },
+      {
+        name: 'cost of Goods And Services Sold',
+        data: costofGoodsAndServicesSold
+      },
+      {
+        name: 'depreciation',
+        data: depreciation
+      },
+      {
+        name: 'grossProfit',
+        data: grossProfit
+      },
+      {
+        name: 'interestIncome',
+        data: interestIncome
+      },
+      {
+        name: 'netIncome',
+        data: netIncome
+      },
+      {
+        name: 'operatingIncome',
+        data: operatingIncome
+      },
+      {
+        name: 'research And Development',
+        data: researchAndDevelopment
+      },
+      {
+        name: 'selling General And Administrative',
+        data: sellingGeneralAndAdministrative
+      },
+      {
+        name: 'income-Tax Expense',
+        data: incomeTaxExpense
+      },
+      {
+        name: 'totalRevenue',
+        data: totalRevenue
+      }],
+        chart: {
+        height: 350,
+        type: 'area'
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'smooth'
+      },
+      xaxis: {
+     
+        categories:fde
+      },
+      tooltip: {
         x: {
-            display: false
+          format: 'dd/MM/yy HH:mm'
         },
-        y: {
-            display: false
-        }
-    }
-    }
-    });
+      },
+      };
+    
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      chart.render();
 }
+
+
