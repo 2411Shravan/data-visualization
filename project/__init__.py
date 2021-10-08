@@ -34,12 +34,12 @@ def create_app():
     app.register_blueprint(fundamentals)
     app.register_blueprint(forex_data)
 
-    from .models import User,Note,MarketValue
+    from .models import User
     create_db(app)
     return app
 
 
 def create_db(app):
-    if not path.exists('project/'+ 'sample.db'):
+    if not path.exists('project/'+ 'trial.db'):
         db.create_all(app=app)
         print('db made successfully')

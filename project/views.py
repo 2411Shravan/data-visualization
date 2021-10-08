@@ -8,7 +8,7 @@ from . import db
 from flask import request
 import requests
 from flask import flash
-from .models import User,Note
+from .models import User
 from flask import url_for
 from pprint import pprint
 view=Blueprint('view',__name__)
@@ -92,9 +92,15 @@ def GDPPercapita():
 
 
 
-@view.route('/user-profile/<string:name>')
+@view.route('/user-profile/<string:name>',methods=['GET','POST'])
 @login_required
 def userprofile(name):
+    if request.method == 'POST':
+        user = User.query.get(current_user.id)
+        db.session.delete(user)
+        db.session.commit()
+        flash('User deleted successfully', category='warning')
+        return redirect(url_for('auth.signup'))
     return render_template('userprofile.html',user=current_user)
 
 
