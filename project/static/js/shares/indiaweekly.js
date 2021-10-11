@@ -53,9 +53,9 @@ function updateIndianWeeklyData(key,val){
         temp_arr.push(parseFloat(data['4. close']));
         valueWeek.push(temp_arr);
     });
-    mergeWeeklyData();
+    mergeWeeklyIndianData();
 }
-function mergeWeeklyData() {
+function mergeWeeklyIndianData() {
     for (var i = 0; i < keyWeek.length; i++) {
         var resi = {};
         // console.log(objects [i]);
