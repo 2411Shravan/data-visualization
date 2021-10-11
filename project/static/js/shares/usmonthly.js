@@ -17,10 +17,10 @@ function ready_monthly_data(rd){
     var stre=rd.toUpperCase();
     console.log(stre);
     var api='https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+stre+'&apikey=WH75LQJ4BD7S15TO';
-    fetchMonthlyData(api);
+    fetchMonthlyUSData(api);
 }
 
-async function fetchMonthlyData(API){
+async function fetchMonthlyUSData(API){
     const response = await fetch(API);
     const responseData = await response.json();
     // console.log(responseData);
@@ -53,10 +53,10 @@ function updateMonthlyData(key, val) {
         monthly_ohlc.push(temp_arr);
     });
     console.log(monthly_ohlc);
-    mergeMonthlyData();
+    mergeMonthlyUSData();
 }
 
-function mergeMonthlyData(){
+function mergeMonthlyUSData(){
     for (var i = 0; i < monthly_dates.length; i++) {
         var resi = {};
         // console.log(objects [i]);
