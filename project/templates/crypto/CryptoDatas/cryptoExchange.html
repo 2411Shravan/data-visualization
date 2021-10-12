@@ -56,11 +56,12 @@
             </div>
         </div>
         </form>
+        <div class="d-flex"> 
+            <p>Before checking the data of another firm from current one do not miss to click </p> <p class="ml-2"><a href=''> Here</a></p>
+        </div>
         </div>
 
-        <div class="container" style="display:flex;align-items:center;justify-content:center;">
-            Before seeing another company's/firm's data    .<button class='btn btn-outline-primary' type="button" onclick='reload()'>click here</button>
-        </div>
+
        
         <div class="container" style="display:flex;align-items:center;justify-content:center;margin-top:50px">
             <div class="sk-chase text-center" id="chase">
@@ -78,7 +79,9 @@
         </div>
         
         <div class="container mt-4">
-            <div id="chart"></div>
+            <div class="cardee">
+                <div id="chart"></div>
+            </div>   
         </div>
 
         
@@ -103,6 +106,15 @@
   left: 0;
   top: 0; 
   animation: sk-chase-dot 2.0s infinite ease-in-out both; 
+}
+.cardee{
+ 
+ background: rgba( 255, 255, 255, 0.12 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+
+border-radius: 25px;
+ border: 1px solid rgba( 0, 0, 0, 0.18 );
+ color: white;
 }
 
 .sk-chase-dot:before {
@@ -143,10 +155,7 @@
     transform: scale(1.0); 
   } 
 }
-#chart {
-  max-width: 850px;
-  margin: 35px auto;
-}
+
 
              .Intru{
         width:50%;

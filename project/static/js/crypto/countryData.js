@@ -17,7 +17,7 @@ async function getCurrencySymbols(){
             "x-rapidapi-host": "ajayakv-rest-countries-v1.p.rapidapi.com"
         }
     });
-
+    console.log("Hello");
     const responseData = await response.json();
     
     //console.log(responseData);

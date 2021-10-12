@@ -3,7 +3,7 @@ const currencyVal = document.getElementById('exchangeCurrency');
 const coinsVal = document.getElementById('exchangeCrypto');
 const exercise = document.getElementById('getExchangeData');
 // const spins = document.getElementById('spins');
-// const writer = document.getElementById('writer');
+
 
 var CoinInput= "";
 var CurInput= "";
