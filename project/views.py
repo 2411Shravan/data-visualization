@@ -22,9 +22,10 @@ def home():
 def about():
     return 'about us'
 
-@view.route('/contact')
+@view.route('/contact',methods=['GET','POST'])
 @login_required
 def contact():
+    
     return render_template('contact.html',user=current_user)
 
 
