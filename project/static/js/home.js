@@ -1,4 +1,5 @@
 const loadbackgroundi= document.getElementById('loadbackgroundi');
+const requiredicon=document.getElementById('requiredicon');
 const photourls=[
     "https://images.unsplash.com/photo-1506794778225-cbf6c8df4c5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80",
    "https://images.unsplash.com/photo-1478728073286-db190d3d8ce6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80",
@@ -14,6 +15,16 @@ const photourls=[
    "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
 ]
 
+
+const iconurls=[
+    '<img src="https://img.icons8.com/external-sbts2018-blue-sbts2018/200/000000/external-stock-market-cryptopcurrency-sbts2018-blue-sbts2018.png" style="height:250px"/>',
+    '<img src="https://img.icons8.com/external-wanicon-flat-wanicon/200/000000/external-stock-market-economic-crisis-wanicon-flat-wanicon.png"/>',
+    '<img src="https://img.icons8.com/external-wanicon-flat-wanicon/200/000000/external-bull-market-stock-market-wanicon-flat-wanicon.png"/>',
+    '<img src="https://img.icons8.com/external-wanicon-two-tone-wanicon/200/000000/external-bull-market-stock-market-wanicon-two-tone-wanicon.png"/>'
+
+
+]
+console.log(iconurls[0]);
     var dist=photourls.length;
    var res=Math.floor(Math.random() * dist);
    var link=photourls[res];
