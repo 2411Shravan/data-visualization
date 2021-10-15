@@ -17,13 +17,21 @@ const photourls=[
 
 
 const iconurls=[
-    '<img src="https://img.icons8.com/external-sbts2018-blue-sbts2018/200/000000/external-stock-market-cryptopcurrency-sbts2018-blue-sbts2018.png" style="height:250px"/>',
-    '<img src="https://img.icons8.com/external-wanicon-flat-wanicon/200/000000/external-stock-market-economic-crisis-wanicon-flat-wanicon.png"/>',
-    '<img src="https://img.icons8.com/external-wanicon-flat-wanicon/200/000000/external-bull-market-stock-market-wanicon-flat-wanicon.png"/>',
-    '<img src="https://img.icons8.com/external-wanicon-two-tone-wanicon/200/000000/external-bull-market-stock-market-wanicon-two-tone-wanicon.png"/>'
-
-
+    '<img src="https://img.icons8.com/external-sbts2018-blue-sbts2018/200/000000/external-stock-market-cryptopcurrency-sbts2018-blue-sbts2018.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-wanicon-flat-wanicon/200/000000/external-stock-market-economic-crisis-wanicon-flat-wanicon.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-wanicon-flat-wanicon/200/000000/external-bull-market-stock-market-wanicon-flat-wanicon.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-wanicon-two-tone-wanicon/200/000000/external-bull-market-stock-market-wanicon-two-tone-wanicon.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/200/000000/external-chart-stock-market-wanicon-lineal-color-wanicon.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/200/000000/external-knowledge-stock-market-wanicon-lineal-color-wanicon.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-wanicon-flat-wanicon/200/000000/external-chart-stock-market-wanicon-flat-wanicon.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-wanicon-flat-wanicon/200/000000/external-knowledge-stock-market-wanicon-flat-wanicon.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/fluency/200/000000/bitcoin.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-justicon-lineal-color-justicon/200/000000/external-bitcoin-cryptocurrency-justicon-lineal-color-justicon-2.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/200/000000/external-bitcoin-cryptocurrency-vitaliy-gorbachev-lineal-color-vitaly-gorbachev-2.png" style="height:300px; width:300px"/>',
+    '<img src="https://img.icons8.com/external-prettycons-flat-prettycons/200/000000/external-cryptocurrencies-crypto-and-currency-prettycons-flat-prettycons.png" style="height:300px; width:300px"/>'
 ]
+
+
 console.log(iconurls[0]);
     var dist=photourls.length;
    var res=Math.floor(Math.random() * dist);
@@ -32,3 +40,7 @@ console.log(iconurls[0]);
    loadbackgroundi.style.backgroundImage+=`url(${link})`;
 
 
+   var dist1=iconurls.length;
+   var res1=Math.floor(Math.random() * dist1);
+   requiredicon.innerHTML+=`${iconurls[res1]}`
+  
