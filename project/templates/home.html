@@ -50,7 +50,7 @@
                 <div class="text">
                     <div class="heading text-white">
                         <h1>Everything under one roof.</h1>
-                        <p>GoldenStar gives stocks,stock-fundamentals,crypto-datas and also foreign-exchanges data under one roof. Users after siging up can use everything on the application for free.</p>
+                        <p>GoldenStar gives stocks,stock-fundamentals,crypto-datas and also foreign-exchanges data under one roof. Users after signing up can use everything on the application for free.</p>
                     </div>
                 </div>
             </div>
@@ -191,6 +191,16 @@
             </div>
             </marquee>
         </div>
+        {%if user.is_authenticated %}
+        <div class="container text-center" >
+            
+         </div>
+        {%else%}
+        <div class="container text-center" style="margin-top:70px">
+            <button class="btn btn-primary"><a href="/signup" style="text-decoration: none;color:white">Register/Sign-up</a></button>
+         </div>
+        {%endif%}
+        
 
     <style>
         #loadbackgroundi{
