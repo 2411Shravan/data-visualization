@@ -1,7 +1,7 @@
 const requiredIncome=document.getElementById('getIncomeSt');
 // const lol= document.getElementById('lol');
 // const loaf=document.getElementById('loafing');
-
+const hiddentext=document.getElementById("hidden-text");
 requiredIncome.addEventListener('submit',function (e){
     
     e.preventDefault();
@@ -43,6 +43,7 @@ async function fetchIncome(API){
         startsortIncome(responseData);
     }
     else{
+      hiddentext.innerHTML+="<h4 class='text-danger text-center'>Wrong Input</h4>"
         console.log('wrong response');
     }
 }

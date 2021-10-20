@@ -30,7 +30,7 @@ def profile():
 
     if request.method == 'POST':
         comp_name = request.form['company']
-        url = 'https://www.alphavantage.co/query?function=OVERVIEW&symbol='+comp_name+'&apikey=WH75LQJ4BD7S15TO'
+        url = 'https://www.alphavantage.co/query?function=OVERVIEW&symbol='+comp_name.upper()+'&apikey=WH75LQJ4BD7S15TO'
         r = requests.get(url)
         data = r.json()
         if data:
