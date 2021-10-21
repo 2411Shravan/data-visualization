@@ -790,46 +790,77 @@ var options = {
   var chart = new ApexCharts(document.querySelector("#chart-line2"), options);
   chart.render();
 
-  var optionsLine = {
+  // var optionsLine = {
+  //   series: [{
+  //   data: data
+  // }],
+  //   chart: {
+  //   id: 'chart1',
+  //   height: 130,
+  //   type: 'area',
+  //   brush:{
+  //     target: 'chart2',
+  //     enabled: true
+  //   },
+  //   selection: {
+  //     enabled: true,
+  //     xaxis: {
+  //       min: new Date('19 Jun 2017').getTime(),
+  //       max: new Date('14 Aug 2017').getTime()
+  //     }
+  //   },
+  // },
+  // colors: ['#008FFB'],
+  // fill: {
+  //   type: 'gradient',
+  //   gradient: {
+  //     opacityFrom: 0.91,
+  //     opacityTo: 0.1,
+  //   }
+  // },
+  // xaxis: {
+  //   type: 'datetime',
+  //   tooltip: {
+  //     enabled: false
+  //   }
+  // },
+  // yaxis: {
+  //   tickAmount: 2
+  // }
+  // };
+
+  // var chartLine = new ApexCharts(document.querySelector("#schart"), optionsLine);
+  // chartLine.render();
+  var options = {
     series: [{
-    data: data
+    data: seriesData
   }],
     chart: {
-    id: 'chart1',
-    height: 130,
-    type: 'area',
-    brush:{
-      target: 'chart2',
-      enabled: true
+    type: 'candlestick',
+    height: 290,
+    id: 'candles',
+    toolbar: {
+      autoSelected: 'pan',
+      show: false
     },
-    selection: {
-      enabled: true,
-      xaxis: {
-        min: new Date('19 Jun 2017').getTime(),
-        max: new Date('14 Aug 2017').getTime()
-      }
+    zoom: {
+      enabled: false
     },
   },
-  colors: ['#008FFB'],
-  fill: {
-    type: 'gradient',
-    gradient: {
-      opacityFrom: 0.91,
-      opacityTo: 0.1,
+  plotOptions: {
+    candlestick: {
+      colors: {
+        upward: '#3C90EB',
+        downward: '#DF7D46'
+      }
     }
   },
   xaxis: {
-    type: 'datetime',
-    tooltip: {
-      enabled: false
-    }
-  },
-  yaxis: {
-    tickAmount: 2
+    type: 'datetime'
   }
   };
 
-  var chartLine = new ApexCharts(document.querySelector("#schart"), optionsLine);
-  chartLine.render();
+  var chart = new ApexCharts(document.querySelector("#chart-candlestick"), options);
+  chart.render();
 
-
+  
